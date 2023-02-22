@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterCommandeFXMLController">
+   <children>
+      <Label layoutX="28.0" layoutY="120.0" text="Nom produit" textAlignment="CENTER" />
+      <TextField fx:id="nom_produit" layoutX="143.0" layoutY="116.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label graphicTextGap="8.0" layoutX="256.0" layoutY="24.0" prefHeight="21.0" prefWidth="119.0" text="Ajouter commande" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+      <TextField fx:id="adresse_depart" layoutX="143.0" layoutY="162.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="166.0" text="Adresse de départ" />
+      <Label layoutX="206.0" layoutY="75.0" text="Date" />
+      <DatePicker fx:id="date" layoutX="262.0" layoutY="71.0" />
+      <Label layoutX="32.0" layoutY="216.0" text="Déstination" />
+      <ComboBox fx:id="check_point" layoutX="143.0" layoutY="211.0" prefWidth="150.0" />
+      <Label layoutX="28.0" layoutY="266.0" text="Catégorie" />
+      <ComboBox fx:id="categorie" layoutX="143.0" layoutY="261.0" prefWidth="150.0" />
+      <Label layoutX="356.0" layoutY="268.0" prefHeight="18.0" prefWidth="58.0" text="Capacité" />
+      <TextField fx:id="capacite" layoutX="421.0" layoutY="264.0" />
+      <Button fx:id="ajouter" layoutX="275.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="36.0" prefWidth="81.0" text="Ajouter" />
+      <Button fx:id="nouvelleCheck" layoutX="297.0" layoutY="211.0" mnemonicParsing="false" onAction="#ajouterCheckPoint" prefHeight="25.0" prefWidth="52.0" text="Autre.." />
+   </children>
+</AnchorPane>
