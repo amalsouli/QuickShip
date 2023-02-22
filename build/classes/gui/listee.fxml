@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="523.0" prefWidth="798.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListeeController">
+    <stylesheets>
+        <URL value="@listee.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="trajettable" layoutX="93.0" layoutY="88.0" prefHeight="258.0" prefWidth="618.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="point" prefWidth="75.0" text="Point" />
+            <TableColumn fx:id="vehicule" prefWidth="75.0" text="Vehicule" />
+            <TableColumn fx:id="conducteur" prefWidth="93.0" text="conducteur" />
+            <TableColumn fx:id="Delete" prefWidth="93.0" text="Action" />
+            <TableColumn fx:id="modifier" prefWidth="93.0" text="modifier" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

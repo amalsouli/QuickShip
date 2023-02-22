@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="651.0" prefWidth="920.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.ListController">
+    <stylesheets>
+        <URL value="@list.css" />
+    </stylesheets>
+       <children>
+      <TableView fx:id="trajettable" layoutX="427.0" layoutY="191.0" prefHeight="407.0" prefWidth="487.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="49.0" text="Id" />
+          <TableColumn fx:id="date" prefWidth="101.0" text="Date" />
+            <TableColumn fx:id="point" prefWidth="120.0" text="Point_depart" />
+            <TableColumn fx:id="vehicule" prefWidth="255.0" text="Vehicule" />
+            <TableColumn fx:id="conducteur" prefWidth="255.0" text="Conducteur" />
+        </columns>
+      </TableView>
+      <Pane layoutX="-6.0" layoutY="75.0" prefHeight="7.0" prefWidth="881.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="545.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="75.0" />
+      <Text layoutX="104.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trajets details" wrappingWidth="306.6708984375">
+         <font>
+            <Font name="System Italic" size="32.0" />
+         </font>
+      </Text>
+      <Button fx:id="modifier" layoutX="84.0" layoutY="544.0" mnemonicParsing="false" text="Modifier" />
+      <Button fx:id="supprimer" layoutX="251.0" layoutY="544.0" mnemonicParsing="false" text="Supprimer" />
+      <TextField fx:id="text1" layoutX="122.0" layoutY="250.0" />
+      <Label layoutX="17.0" layoutY="255.0" prefHeight="21.0" prefWidth="96.0" text="Point_départ" />
+      <DatePicker fx:id="text2" layoutX="122.0" layoutY="326.0" />
+      <Label layoutX="22.0" layoutY="331.0" prefHeight="21.0" prefWidth="51.0" text="Date" />
+      <ComboBox fx:id="text3" layoutX="122.0" layoutY="403.0" prefWidth="150.0" />
+      <ComboBox fx:id="text4" layoutX="122.0" layoutY="472.0" prefWidth="150.0" />
+      <Label layoutX="17.0" layoutY="408.0" text="Vehicule" />
+      <Label layoutX="17.0" layoutY="477.0" text="Conducteur" />
+   </children>
+</AnchorPane>

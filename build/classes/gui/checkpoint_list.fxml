@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="826.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.Checkpoint_listController">
+    <stylesheets>
+        <URL value="@checkpoint_list.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="table" layoutX="95.0" layoutY="113.0" prefHeight="240.0" prefWidth="655.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="destination" prefWidth="87.0" text="destination" />
+            <TableColumn fx:id="heure" prefWidth="69.0" text="heure" />
+            <TableColumn fx:id="minutes" prefWidth="89.0" text="minutes" />
+            <TableColumn fx:id="date" prefWidth="109.0" text="Date_trajet" />
+            <TableColumn fx:id="supprimer" prefWidth="109.0" text="Supprimer" />
+            <TableColumn fx:id="modifer" prefWidth="109.0" text="Modifer" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
