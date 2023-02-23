@@ -10,6 +10,7 @@ import Entities.Conducteur;
 import Entities.Trajet;
 import Entities.Vehicule;
 import Services.CheckService;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -17,10 +18,14 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -41,12 +46,17 @@ public class UpdateCheckController implements Initializable {
     private Button modifier;
     @FXML
     private TextField id;
+    @FXML
+    private Text text1;
+    @FXML
+    private Button retour;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        id.setDisable(true);
         // TODO
     }  
     
@@ -61,7 +71,7 @@ public class UpdateCheckController implements Initializable {
     }
 
     @FXML
-    private void modifier(ActionEvent event) throws SQLException {
+    private void modifier(ActionEvent event) throws SQLException, IOException {
           
         Trajet t = date.getValue();
         
@@ -75,6 +85,21 @@ public class UpdateCheckController implements Initializable {
         CheckPoint p =new CheckPoint(ide,des,h,m,t);
         s.modifier_check(p);
         System.out.println(t.getConducteur().getId());
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("checkpoint_list.fxml"));
+          Parent root=loader.load();
+          Parent parent = loader.getRoot();
+         Scene scene = modifier.getScene();
+          scene.setRoot(parent);
+    }
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+                      Parent root=loader.load();
+                     Parent parent = loader.getRoot();
+                            
+                          Scene scene = retour.getScene();
+                          scene.setRoot(parent);
     }
     
 }

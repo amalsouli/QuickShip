@@ -9,6 +9,7 @@ import Entities.Conducteur;
 import Entities.Trajet;
 import Entities.Vehicule;
 import Services.TrajetService;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -19,13 +20,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -50,13 +56,15 @@ public class HomeFXMLController implements Initializable {
     @FXML
     private Button ajout;
     @FXML
-    private Label err;
-    @FXML
     private Label err1;
     @FXML
     private Label err11;
     @FXML
     private Label err111;
+    @FXML
+    private Text text;
+    @FXML
+    private Button btn2;
 
     /**
      * Initializes the controller class.
@@ -73,34 +81,90 @@ public class HomeFXMLController implements Initializable {
     }    
 
     @FXML
-    private void ajouter(ActionEvent event) throws SQLException {
+    private void ajouter(ActionEvent event) throws SQLException, IOException {
         LocalDate currentDate = LocalDate.now();
         LocalDate selectedDate = date.getValue();
-        
+        //java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
         String point = point_dép.getText();
         Conducteur conducteur1 = conducteur.getValue();
         Vehicule vehicule1 = vehicule.getValue();
         TrajetService ts=new TrajetService();
-        if(point_dép.getText().isEmpty())
+        boolean a=true;
+        
+        if(date.getValue()!=null)
         {
-            err1.setText("Tous les champs sont obligatoires !");
+        for(Trajet t:ts.afficher())
+        {
+            if(t.getDate().toString().equals(date.getValue().toString())&& t.getConducteur().equals(conducteur1))
+            {
+                a=false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Le conducteur ne peut pas avoir deux trajet à la méme date " );
+                alert.showAndWait();
+                
+            }
+            if(t.getDate().toString().equals(date.getValue().toString())&& t.getVehicule().equals(vehicule1))
+            {
+                a=false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Le conducteur ne peut pas avoir deux trajet à la méme date " );
+                alert.showAndWait();
+                date.setValue(currentDate);
+            }
+           
+        }
+        }
+        if(point_dép.getText().isEmpty() ||conducteur.getSelectionModel().getSelectedIndex() == -1||vehicule.getSelectionModel().getSelectedIndex() == -1 ||date.getValue()==null)
+        {
+            a=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Vous devez remplir ce champ: " );
+                alert.showAndWait();
+               
         }
         if(selectedDate.isBefore(currentDate))
         {
-           err.setText("Veuillez choisir une date valide");
+           a=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez resaisir la date: " );
+                alert.showAndWait();     
         }
-       if(conducteur.getSelectionModel().getSelectedIndex() == -1)
+       /*if(conducteur.getSelectionModel().getSelectedIndex() == -1)
         {
-           err11.setText("Un conducteur doit étre selectionné");
+          a=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir un conducteur: " );
+                alert.showAndWait();      
         }
        if(vehicule.getSelectionModel().getSelectedIndex() == -1)
         {
-           err111.setText("Un vehicule doit étre selectionné");
-        }
-        java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
-        Trajet t =new Trajet(datee,point,vehicule1,conducteur1);
-        ts.ajouter(t);
+          a=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir un véhicule " );
+                alert.showAndWait();
+                
+        }*/
+       
         
+        //Trajet t =new Trajet(datee,point,vehicule1,conducteur1);
+        if(a==true)
+        {
+            java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
+            Trajet t =new Trajet(datee,point,vehicule1,conducteur1);
+            ts.ajouter(t);
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Listee.fxml"));
+          Parent root=loader.load();
+          Parent parent = loader.getRoot();
+                            
+                          Scene scene = ajout.getScene();
+                          scene.setRoot(parent);
+        }
+        
+        
+    }
+
+    @FXML
+    private void acceuil(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+                      Parent root=loader.load();
+                     Parent parent = loader.getRoot();
+                            
+                          Scene scene = btn2.getScene();
+                          scene.setRoot(parent);
     }
     
 }

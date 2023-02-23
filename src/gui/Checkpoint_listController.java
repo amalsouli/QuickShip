@@ -23,6 +23,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,6 +34,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 /**
@@ -61,6 +63,10 @@ public class Checkpoint_listController implements Initializable {
     private TableColumn<CheckPoint, Button> supprimer;
     @FXML
     private TableColumn<CheckPoint, Button> modifer;
+    @FXML
+    private Button retour;
+    @FXML
+    private Text text1;
     
     /**
      * Initializes the controller class.
@@ -97,6 +103,7 @@ public class Checkpoint_listController implements Initializable {
                     setGraphic(null);
                     if (!empty) {
                         Button b = new Button("Delete");
+                         b.setStyle("-fx-background-color: red");
                         b.setOnAction((event) -> {
                        
                             try {
@@ -126,7 +133,9 @@ public class Checkpoint_listController implements Initializable {
                 protected void updateItem(Object item, boolean empty) {
                     setGraphic(null);
                     if (!empty) {
-                        Button b = new Button("Modifier");
+                        Button b = new Button("Modifier"); 
+                        b.setStyle("-fx-background-color: green");
+                        
                         b.setOnAction((event) -> {
                        
         CheckPoint C=table.getSelectionModel().getSelectedItem();
@@ -160,6 +169,16 @@ public class Checkpoint_listController implements Initializable {
             };
 
         });
+    }
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Ajoutcheck.fxml"));
+        
+                        Parent root=loader.load();
+                        Parent parent = loader.getRoot();
+                          Scene scene = retour.getScene();
+                          scene.setRoot(parent);
     }
     }    
     

@@ -5,3 +5,56 @@
 .mainFxmlClass {
 
 }
+/*
+ * Empty Stylesheet file.
+ */
+
+
+/* Couleurs de la palette */
+
+
+/* Style de la TableView */
+/* Style général de la TableView */
+.root{
+   
+}
+.table-view {
+    -fx-background-color: white;
+}
+
+/* Style des cellules */
+.table-cell {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0.75em 0.5em;
+}
+
+/* Style des en-têtes de colonnes */
+.table-column .label {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0.5em;
+    
+    -fx-background-color: linear-gradient(to right, #F1B249, #F0C57E);
+    -fx-text-fill: white;
+}
+
+/* Style du bouton dans la colonne "Action" */
+.button {
+    -fx-background-color: #F69F3C;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 3);
+}
+#text1{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+    
+}
+.button:hover {
+    -fx-background-color: #4c4c4c;
+    -fx-cursor: hand;
+}

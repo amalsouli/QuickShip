@@ -5,3 +5,47 @@
 .mainFxmlClass {
 
 }
+/* Définition des styles pour un bouton */
+.button {
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 3);
+}
+
+/* Définition des styles pour un bouton lorsqu'il est survolé */
+.button:hover {
+    -fx-background-color: #4c4c4c;
+    -fx-cursor: hand;
+}
+
+/* Définition des styles pour un bouton lorsqu'il est pressé */
+.button:pressed {
+    -fx-background-color: #313131;
+    -fx-effect: none;
+}
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #bbb;
+    -fx-border-radius: 5;
+    -fx-border-width: 2px;
+    -fx-font-size: 14px;
+}
+.root {
+    -fx-background-color: linear-gradient(to right, #F1B249, #F0C57E);
+}
+#text{
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+

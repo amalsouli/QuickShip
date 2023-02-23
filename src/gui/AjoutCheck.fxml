@@ -5,21 +5,31 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="611.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.AjoutCheckController">
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjoutCheckController">
     <stylesheets>
         <URL value="@ajoutcheck.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="destination" layoutX="235.0" layoutY="82.0" />
-      <TextField fx:id="heure" layoutX="235.0" layoutY="149.0" />
-      <TextField fx:id="minute" layoutX="235.0" layoutY="206.0" />
-      <Label layoutX="108.0" layoutY="87.0" prefHeight="21.0" prefWidth="88.0" text="Destination" />
-      <Label layoutX="108.0" layoutY="154.0" prefHeight="21.0" prefWidth="88.0" text="Heure" />
-      <Label layoutX="108.0" layoutY="211.0" prefHeight="21.0" prefWidth="88.0" text="Minute" />
-      <ComboBox fx:id="date" layoutX="235.0" layoutY="269.0" prefWidth="150.0" />
-      <Label layoutX="108.0" layoutY="274.0" prefHeight="21.0" prefWidth="88.0" text="Date Trajet" />
-      <Button fx:id="ajouter" layoutX="273.0" layoutY="336.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <TextField fx:id="destination" layoutX="371.0" layoutY="101.0" />
+      <TextField fx:id="heure" layoutX="371.0" layoutY="159.0" />
+      <TextField fx:id="minute" layoutX="371.0" layoutY="223.0" />
+      <Label layoutX="234.0" layoutY="108.0" prefHeight="21.0" prefWidth="88.0" text="Destination" />
+      <Label layoutX="234.0" layoutY="166.0" prefHeight="21.0" prefWidth="88.0" text="Heure" />
+      <Label layoutX="234.0" layoutY="230.0" prefHeight="21.0" prefWidth="88.0" text="Minute" />
+      <ComboBox fx:id="date" layoutX="371.0" layoutY="295.0" prefWidth="150.0" />
+      <Label layoutX="234.0" layoutY="300.0" prefHeight="21.0" prefWidth="88.0" text="Date Trajet" />
+      <Button fx:id="ajouter" layoutX="402.0" layoutY="378.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Text fx:id="text" layoutX="357.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout check Point" wrappingWidth="205.6708984375" />
+      <ImageView fitHeight="34.0" fitWidth="58.0" layoutX="803.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/log.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn2" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#acceuil" text="Acceuil" />
    </children>
 </AnchorPane>

@@ -37,7 +37,7 @@ public class test {
             Trajet T =new Trajet(21,sqlDate,"tuuozer",V,C);
            // S.modifier(T);
           // System.out.println(S.afficher()); 
-         // System.out.println(S.afficher());
+          System.out.println(S.afficher());
            CheckService ce = new CheckService();
                  CheckPoint c=new CheckPoint("marsa",2,3,T);
                 
