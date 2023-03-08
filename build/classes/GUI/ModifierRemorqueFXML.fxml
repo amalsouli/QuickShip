@@ -11,46 +11,65 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierRemorqueFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierRemorqueFXMLController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="5.0" prefHeight="445.0" prefWidth="605.0">
          <children>
             <AnchorPane id="AnchorPane" layoutX="14.0" prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="modiier" defaultButton="true" layoutX="477.0" layoutY="210.0" mnemonicParsing="false" onAction="#modiier" prefHeight="31.0" prefWidth="99.0" text="Modifier" textFill="#3407fc">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <VBox layoutX="-54.0" prefHeight="445.0" prefWidth="114.0" style="-fx-background-color: #001D6E;">
+                  <VBox layoutX="-54.0" prefHeight="563.0" prefWidth="114.0" style="-fx-background-color: #001D6E;">
                      <effect>
                         <ColorAdjust />
                      </effect>
                   </VBox>
-                  <Label layoutX="141.0" layoutY="16.0" prefHeight="35.0" prefWidth="283.0" text="Modifier remorque N°" textFill="#0b75ee">
+                  <Label layoutX="278.0" layoutY="21.0" prefHeight="53.0" prefWidth="386.0" text="Modifier remorque " textFill="#0b75ee">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="195.0" layoutY="124.0" prefHeight="31.0" prefWidth="165.0" text="Longueur :" textFill="#210f8a" underline="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="idd" layoutX="392.0" layoutY="16.0" prefHeight="31.0" prefWidth="64.0" />
-                  <ImageView fitHeight="139.0" fitWidth="127.0" layoutX="519.0" layoutY="-38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@logo-pi-final.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="101.0" layoutY="93.0" prefHeight="31.0" prefWidth="165.0" text="Longueur :" textFill="#210f8a" underline="true" />
-                  <Label layoutX="101.0" layoutY="151.0" prefHeight="31.0" prefWidth="144.0" text="Largeur :" textFill="#210f8a" underline="true" />
-                  <Label layoutX="101.0" layoutY="210.0" prefHeight="31.0" prefWidth="155.0" text="Capacité :" textFill="#210f8a" underline="true" />
-                  <Label layoutX="101.0" layoutY="321.0" prefHeight="31.0" prefWidth="155.0" text="Couleur :" textFill="#210f8a" underline="true" />
-                  <TextField fx:id="capacitee" layoutX="276.0" layoutY="210.0" />
-                  <TextField fx:id="largeurr" layoutX="276.0" layoutY="151.0" />
-                  <TextField fx:id="longueurr" layoutX="276.0" layoutY="93.0" />
-                  <ComboBox fx:id="couleurr" layoutX="277.0" layoutY="321.0" onAction="#check_remorque" onDragDetected="#check_remorque" onDragEntered="#check_remorque" prefHeight="31.0" prefWidth="187.0" />
-                  <Label layoutX="101.0" layoutY="268.0" prefHeight="31.0" prefWidth="144.0" text="Marque :" textFill="#210f8a" underline="true" />
-                  <TextField fx:id="marquee" layoutX="277.0" layoutY="268.0" />
+                  <Label layoutX="195.0" layoutY="193.0" prefHeight="31.0" prefWidth="144.0" text="Largeur :" textFill="#210f8a" underline="true">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="195.0" layoutY="266.0" prefHeight="31.0" prefWidth="155.0" text="Capacité :" textFill="#210f8a" underline="true">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="195.0" layoutY="390.0" prefHeight="31.0" prefWidth="155.0" text="Couleur :" textFill="#210f8a" underline="true">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="capacitee" layoutX="328.0" layoutY="268.0" />
+                  <TextField fx:id="largeurr" layoutX="328.0" layoutY="195.0" />
+                  <TextField fx:id="longueurr" layoutX="328.0" layoutY="126.0" />
+                  <ComboBox fx:id="couleurr" layoutX="328.0" layoutY="392.0" onAction="#check_remorque" onDragDetected="#check_remorque" onDragEntered="#check_remorque" prefHeight="31.0" prefWidth="187.0" />
+                  <Label layoutX="195.0" layoutY="328.0" prefHeight="31.0" prefWidth="144.0" text="Marque :" textFill="#210f8a" underline="true">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="marquee" layoutX="328.0" layoutY="330.0" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="139.0" fitWidth="127.0" layoutX="799.0" layoutY="-22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo-pi-final.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="modiier" defaultButton="true" layoutX="626.0" layoutY="269.0" mnemonicParsing="false" onAction="#modiier" prefHeight="51.0" prefWidth="144.0" text="Modifier" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

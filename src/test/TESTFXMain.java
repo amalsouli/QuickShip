@@ -27,13 +27,14 @@ public class TESTFXMain extends Application {
       try {
           
            Parent root = FXMLLoader.load(getClass().getResource("../GUI/AccueilFXML.fxml"));
-           //Parent root = FXMLLoader.load(getClass().getResource("../GUI/AfficherVehiculeFXML.fxml"));
-           //Parent root = FXMLLoader.load(getClass().getResource("../GUI/HomeRemorqueFXMLfxml.fxml"));
+           //Parent root = FXMLLoader.load(getClass().getResource("../GUI/FrontFXML.fxml"));
+      
 
             Scene scene = new Scene(root);
             primaryStage.setTitle("Ajouter Vehicules");
-            primaryStage.setHeight(445);
-            primaryStage.setWidth(700);
+            primaryStage.setHeight(650);
+            primaryStage.setWidth(1000);
+            primaryStage.setResizable(false);            
             //primaryStage.setTitle("Afficher Commandes");
             primaryStage.setScene(scene);
             primaryStage.show();

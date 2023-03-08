@@ -11,48 +11,87 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeVehiculeFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeVehiculeFXMLController">
    <children>
-      <Label layoutX="116.0" layoutY="100.0" prefHeight="31.0" prefWidth="165.0" text="Marque :" textFill="#210f8a" underline="true" />
-      <Label layoutX="116.0" layoutY="158.0" prefHeight="31.0" prefWidth="144.0" text="Modele :" textFill="#210f8a" underline="true" />
-      <Label layoutX="116.0" layoutY="217.0" prefHeight="31.0" prefWidth="155.0" text="Annee :" textFill="#210f8a" underline="true" />
-      <Label layoutX="116.0" layoutY="328.0" prefHeight="31.0" prefWidth="155.0" text="Type :" textFill="#210f8a" underline="true" />
-      <Label layoutX="116.0" layoutY="275.0" prefHeight="31.0" prefWidth="165.0" text="Capacité :" textFill="#210f8a" underline="true" />
-      <TextField fx:id="annee" layoutX="291.0" layoutY="217.0" />
-      <TextField fx:id="modele" layoutX="291.0" layoutY="158.0" />
-      <TextField fx:id="marque" layoutX="291.0" layoutY="100.0" />
-      <TextField fx:id="capacite" layoutX="292.0" layoutY="275.0" />
-      <Button defaultButton="true" layoutX="511.0" layoutY="167.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="99.0" text="Ajouter" textFill="#3407fc">
+      <Label layoutX="191.0" layoutY="144.0" prefHeight="31.0" prefWidth="165.0" text="Marque :" textFill="#210f8a" underline="true">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="191.0" layoutY="235.0" prefHeight="31.0" prefWidth="144.0" text="Modele :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="191.0" layoutY="293.0" prefHeight="31.0" prefWidth="155.0" text="Annee :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="191.0" layoutY="405.0" prefHeight="31.0" prefWidth="155.0" text="Type :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="191.0" layoutY="352.0" prefHeight="31.0" prefWidth="165.0" text="Capacité :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="annee" layoutX="424.0" layoutY="294.0" />
+      <TextField fx:id="modele" layoutX="424.0" layoutY="236.0" />
+      <TextField fx:id="capacite" layoutX="424.0" layoutY="353.0" />
+      <Button defaultButton="true" layoutX="667.0" layoutY="198.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="51.0" prefWidth="126.0" text="Ajouter" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <ComboBox fx:id="type" layoutX="292.0" layoutY="328.0" onAction="#check_remorque" prefHeight="31.0" prefWidth="187.0" />
-      <Button fx:id="afficher" defaultButton="true" layoutX="510.0" layoutY="240.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="99.0" text="Afficher" textFill="#3407fc">
+      <ComboBox fx:id="type" layoutX="424.0" layoutY="406.0" onAction="#check_remorque" prefHeight="31.0" prefWidth="187.0" />
+      <Button fx:id="afficher" defaultButton="true" layoutX="667.0" layoutY="335.0" mnemonicParsing="false" onAction="#afficher" prefHeight="51.0" prefWidth="126.0" text="Afficher" textFill="#3407fc">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <VBox layoutX="-59.0" prefHeight="510.0" prefWidth="119.0" style="-fx-background-color: #001D6E;">
+      <VBox layoutX="-59.0" prefHeight="650.0" prefWidth="119.0" style="-fx-background-color: #001D6E;">
          <effect>
             <ColorAdjust />
          </effect>
       </VBox>
-      <Label fx:id="lonueurL" layoutX="111.0" layoutY="394.0" prefHeight="31.0" prefWidth="202.0" text="Choisissez une remorque :" textFill="#210f8a" underline="true" />
-      <ComboBox fx:id="longueurT" layoutX="291.0" layoutY="394.0" prefHeight="31.0" prefWidth="187.0" />
-      <Label layoutX="195.0" layoutY="14.0" prefHeight="21.0" prefWidth="373.0" text="Ajouter des véhicules" textFill="#0b75ee">
+      <Label fx:id="lonueurL" layoutX="191.0" layoutY="542.0" prefHeight="35.0" prefWidth="226.0" text="Choisissez une remorque :" textFill="#210f8a" underline="true">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <ComboBox fx:id="longueurT" layoutX="424.0" layoutY="545.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="264.0" layoutY="14.0" prefHeight="21.0" prefWidth="373.0" text="Ajouter des véhicules" textFill="#0b75ee">
+         <font>
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="597.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="793.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logo-pi-final.png" />
          </image>
       </ImageView>
-      <Label layoutX="116.0" layoutY="56.0" prefHeight="31.0" prefWidth="165.0" text="Matricule :" textFill="#210f8a" underline="true" />
-      <TextField fx:id="matricule" layoutX="291.0" layoutY="56.0" />
-      <Button fx:id="retourA" defaultButton="true" layoutX="23.0" layoutY="16.0" mnemonicParsing="false" onAction="#retourA" prefHeight="31.0" prefWidth="75.0" text="Accueil" textFill="#3407fc">
+      <Label layoutX="191.0" layoutY="93.0" prefHeight="31.0" prefWidth="165.0" text="Matricule :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="premiersChiffres" layoutX="417.0" layoutY="93.0" prefHeight="31.0" prefWidth="62.0" promptText="000" />
+      <Button fx:id="retourA" defaultButton="true" layoutX="23.0" layoutY="16.0" mnemonicParsing="false" onAction="#retourA" prefHeight="39.0" prefWidth="89.0" text="Accueil" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="marque" layoutX="424.0" layoutY="145.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="191.0" layoutY="189.0" prefHeight="31.0" prefWidth="144.0" text="Couleur :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="couleur" layoutX="423.0" layoutY="190.0" />
+      <Label layoutX="191.0" layoutY="474.0" prefHeight="31.0" prefWidth="155.0" text="Statut :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="statut" layoutX="424.0" layoutY="475.0" prefHeight="31.0" prefWidth="187.0" />
+      <TextField fx:id="derniersChiffres" layoutX="557.0" layoutY="93.0" prefHeight="31.0" prefWidth="62.0" promptText="0000" />
+      <TextField fx:id="tun" layoutX="487.0" layoutY="93.0" prefHeight="31.0" prefWidth="62.0" promptText="TUN" />
+      <Button fx:id="retour" defaultButton="true" layoutX="34.0" layoutY="576.0" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="99.0" text="Retour" textFill="#3407fc">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

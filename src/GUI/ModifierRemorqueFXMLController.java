@@ -24,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -39,8 +40,8 @@ import services.VehiculeServices;
  * @author USER
  */
 public class ModifierRemorqueFXMLController implements Initializable {
-    
-     private List<String> couleurs = new ArrayList<>();
+
+    private List<String> couleurs = new ArrayList<>();
     private ObservableList<String> observableCouleurs = FXCollections.observableList(couleurs);
 
     @FXML
@@ -56,12 +57,7 @@ public class ModifierRemorqueFXMLController implements Initializable {
     private ComboBox<String> couleurr;
     @FXML
     private TextField marquee;
-    @FXML
-    private TextField idd;
-    private Label longueur;
-    private Label largeur;
-    private Label couleur;
-    private Label marque;
+    private int idd;
 
     /**
      * Initializes the controller class.
@@ -72,44 +68,69 @@ public class ModifierRemorqueFXMLController implements Initializable {
         observableCouleurs.add("ROUGE");
         observableCouleurs.add("VERT");
         observableCouleurs.add("JAUNE");
+        observableCouleurs.add("rouge");
+       
         couleurr.setItems(observableCouleurs);
     }
 
     @FXML
     private void modiier(ActionEvent event) {
         try {
-               int ide = Integer.parseInt(idd.getText());
-            idd.setEditable(false);
-            idd.setDisable(true);
+            //int ide = Integer.parseInt(idd.getText());
+
             String longueurR = longueurr.getText();
             String largeurR = largeurr.getText();
             String capaciteR = capacitee.getText();
             String marqueR = marquee.getText();
             String couleurR = couleurr.getValue();
+            boolean a = true;
 
-            int lor = Integer.parseInt(longueurR);
-            int lar = Integer.parseInt(largeurR);
-            int cr = Integer.parseInt(capaciteR);
+            if (longueurr.getText().isEmpty() || largeurr.getText().isEmpty() || capacitee.getText().isEmpty() || marquee.getText().isEmpty() || couleurr.getValue().isEmpty()) {
+                a = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir un modele");
+                alert.showAndWait();
+            }
+            if (!capacitee.getText().matches("\\d+")) {
+                a = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une capacite valable en chiffres");
+                alert.showAndWait();
+                capacitee.setText("");
+            }
+            if (!largeurr.getText().matches("\\d+")) {
+                a = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une largeur valable en chiffres");
+                alert.showAndWait();
+                largeurr.setText("");
+            }
+            if (!longueurr.getText().matches("\\d+")) {
+                a = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une longueurr valable en chiffres");
+                alert.showAndWait();
+                longueurr.setText("");
 
+            }
+            if (a) {
+                int lor = Integer.parseInt(longueurR);
+                int lar = Integer.parseInt(largeurR);
+                int cr = Integer.parseInt(capaciteR);
 
-            RemorqueServices rs = new RemorqueServices();
-            Remorque r = new Remorque(ide,lor, lar, cr,couleurR, marqueR);
+                RemorqueServices rs = new RemorqueServices();
+                Remorque r = new Remorque(idd, lor, lar, cr, couleurR, marqueR);
 
-            System.out.println(r);
-            rs.modifier(r);
-            //affichage apres modifier
-            Parent nouvelleVue = FXMLLoader.load(getClass().getResource("AfficherRemorqueFXML.fxml"));
-            Scene scene = modiier.getScene();
-            scene.setRoot(nouvelleVue);
+                System.out.println(r);
+                rs.modifier(r);
+                //affichage apres modifier
+                Parent nouvelleVue = FXMLLoader.load(getClass().getResource("AfficherRemorqueFXML.fxml"));
+                Scene scene = modiier.getScene();
+                scene.setRoot(nouvelleVue);
+            }
         } catch (IOException ex) {
             Logger.getLogger(ModifierVehiculeFXMLfxmlController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     void SetRemorque(Remorque r) {
-        String idv = String.valueOf(r.getId_remorque());
-        idd.setText(idv);
+        idd = r.getId_remorque();
         String longg = String.valueOf(r.getLongueur());
         longueurr.setText(longg);
         String largeurrrr = String.valueOf(r.getLargeur());
@@ -131,6 +152,7 @@ public class ModifierRemorqueFXMLController implements Initializable {
 
     @FXML
     private void check_remorque(ActionEvent event) {
+
     }
 
 }

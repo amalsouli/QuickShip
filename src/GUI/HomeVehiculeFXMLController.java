@@ -48,8 +48,12 @@ public class HomeVehiculeFXMLController implements Initializable {
 
     private List<Remorque> remorques = new RemorqueServices().afficher();
     private ObservableList<Remorque> observableCRemorque = FXCollections.observableList(remorques);
-    
-    
+
+    private List<String> marques = new ArrayList<>();
+    private ObservableList<String> observableMarque = FXCollections.observableList(marques);
+
+    private List<String> statuts = new ArrayList<>();
+    private ObservableList<String> observableStatut = FXCollections.observableList(statuts);
 
     @FXML
     private ComboBox<TYPE_VEHICULE> type;
@@ -57,8 +61,6 @@ public class HomeVehiculeFXMLController implements Initializable {
     private TextField annee;
     @FXML
     private TextField modele;
-    @FXML
-    private TextField marque;
     @FXML
     private TextField capacite;
     @FXML
@@ -68,10 +70,23 @@ public class HomeVehiculeFXMLController implements Initializable {
     private Label lonueurL;
     @FXML
     private ComboBox<Remorque> longueurT;
-    @FXML
-    private TextField matricule;
+    //private TextField matricule;
     @FXML
     private Button retourA;
+    @FXML
+    private ComboBox<String> marque;
+    @FXML
+    private TextField couleur;
+    @FXML
+    private ComboBox<String> statut;
+    @FXML
+    private TextField premiersChiffres;
+    @FXML
+    private TextField derniersChiffres;
+    @FXML
+    private TextField tun;
+    @FXML
+    private Button retour;
 
     /**
      * Initializes the controller class.
@@ -79,10 +94,25 @@ public class HomeVehiculeFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        tun.setText("TUN");
+        tun.setEditable(false);
+
         longueurT.setItems(observableCRemorque);
         type.setItems(observableType);
+
         lonueurL.setVisible(false);
         longueurT.setVisible(false);
+
+        observableMarque.add("KIA");
+        observableMarque.add("FORD");
+        observableMarque.add("RENAULT");
+        observableMarque.add("CITROEN");
+        marque.setItems(observableMarque);
+
+        observableStatut.add("DISPONIBLE");
+        observableStatut.add("NON DISPONIBLE");
+        observableStatut.add("EN PANNE");
+        statut.setItems(observableStatut);
 
     }
 
@@ -90,37 +120,73 @@ public class HomeVehiculeFXMLController implements Initializable {
     private void ajouter(ActionEvent event) {
         TYPE_VEHICULE typeV = type.getValue();
         String anneeV = annee.getText();
-        String matriculeV = matricule.getText();
+        //String matriculeV = matricule.getText();
+        String premiersChiffresV = premiersChiffres.getText();
+        String tunV = tun.getText();
+        String derniersChiffresV = derniersChiffres.getText();
+        String matriculeV = premiersChiffresV + tunV + derniersChiffresV;
+        System.out.println(matriculeV);
         String capaciteV = capacite.getText();
         String modeleV = modele.getText();
-        String marqueV = marque.getText();
-       
+        String marqueV = marque.getValue();
+        String couleurV = couleur.getText();
+        String statutV = statut.getValue();
+
         Utilisateur u = new Utilisateur(2, "selim", "sahli", "selimsahli2@gmail.com", "123456789", "la marsa", "123456789", "");
         Remorque r = longueurT.getValue();
-                VehiculeServices vs = new VehiculeServices();
+        VehiculeServices vs = new VehiculeServices();
         boolean a = true;
-        for(Vehicule v : vehicules){
-            System.out.println(marqueV.equals(v.getMatricule()));
-        if(matriculeV.equals(v.getMatricule()))
-        {
-            System.out.println("existe");
-              a = false;
-            Alert alert = new Alert(Alert.AlertType.ERROR, " Matricule existe déja ");
-            alert.showAndWait();
-            marque.setText("");
-        }}
-     if (modeleV.isEmpty()) {
+        String regex1 = "\\d{3}";
+        String regex2 = "TUN";
+        String regex3 ="\\d{4}";
+        for (Vehicule v : vehicules) {
+
+            if (v.getMatricule().equals(matriculeV)) {
+                a = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR, " Matricule existe déja ");
+                alert.showAndWait();
+            }
+        }
+        if (!premiersChiffresV.matches(regex1)) {
             a = false;
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Vous devez remplir ce champ: ");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Le 1er champ de la matricule doit contenir 3 chiffres ");
+            alert.showAndWait();
+        }
+        if (!tunV.matches(regex2)) {
+            a = false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Ce champs doit contenir 'TUN' ");
+            alert.showAndWait();
+        }
+        if (!derniersChiffresV.matches(regex3)) {
+            a = false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Le 3eme champ de la matricule doit contenir 4 chiffres  ");
+            alert.showAndWait();
+        }
+
+        if (couleurV.isEmpty()) {
+            a = false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir une couleur");
+            alert.showAndWait();
+            couleur.setText("");
+        }
+        if (modeleV.isEmpty()) {
+            a = false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir un modele");
             alert.showAndWait();
             modele.setText("");
         }
-      if (marque.getText().isEmpty()) {
+        if (marque.getSelectionModel().getSelectedIndex() == -1) {
             a = false;
             Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir une marque");
             alert.showAndWait();
         }
         if (type.getSelectionModel().getSelectedIndex() == -1) {
+            a = false;
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir un type");
+            alert.showAndWait();
+        }
+
+        if (statut.getSelectionModel().getSelectedIndex() == -1) {
             a = false;
             Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir un type");
             alert.showAndWait();
@@ -132,23 +198,23 @@ public class HomeVehiculeFXMLController implements Initializable {
             alert.showAndWait();
 
         }
-        
+
         if (annee.getText().isEmpty()) {
             a = false;
             Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir une annee");
             alert.showAndWait();
 
         }
-     
+
         if (!capacite.getText().matches("\\d+")) {
             a = false;
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une capacite valable");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une capacite valable en chiffres");
             alert.showAndWait();
 
         }
-        if (!annee.getText().matches("\\d+")) {
+        if (!annee.getText().matches("\\d{4}")) {
             a = false;
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une annee valable ");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez choisir une annee valable en chiffres");
             alert.showAndWait();
 
         }
@@ -157,21 +223,22 @@ public class HomeVehiculeFXMLController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Veuillez saisir une remorque");
             alert.showAndWait();
         }
-        int av = Integer.parseInt(anneeV);
-        int cv = Integer.parseInt(capaciteV);
-        Vehicule v = new Vehicule(av, cv, marqueV, modeleV, typeV, r, u,matriculeV);
-        if(a==true)
-        {
-          vs.ajouter(v);   
-             try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficherVehiculeFXML.fxml"));
-            Parent root = loader.load();
-            afficher.getScene().setRoot(root);
-        } catch (IOException ex) {
-            System.out.print(ex.getMessage());
+
+        if (a == true) {
+            int av = Integer.parseInt(anneeV);
+            int cv = Integer.parseInt(capaciteV);
+            Vehicule v = new Vehicule(av, cv, marqueV, modeleV, typeV, r, u, matriculeV, couleurV, statutV);
+
+            vs.ajouter(v);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficherVehiculeFXML.fxml"));
+                Parent root = loader.load();
+                afficher.getScene().setRoot(root);
+            } catch (IOException ex) {
+                System.out.print(ex.getMessage());
+            }
         }
-        }
-       
+
     }
 
     @FXML
@@ -185,9 +252,6 @@ public class HomeVehiculeFXMLController implements Initializable {
         }
     }
 
- 
-   
-
     @FXML
     private void check_remorque(ActionEvent event) {
         System.out.println("nbc vxcgbfv");
@@ -198,19 +262,30 @@ public class HomeVehiculeFXMLController implements Initializable {
         } else {
             lonueurL.setVisible(false);
             longueurT.setVisible(false);
-            
+
         }
 
     }
 
     @FXML
     private void retourA(ActionEvent event) {
-       try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AccueilFXML.fxml"));
             Parent root = loader.load();
             retourA.getScene().setRoot(root);
-           } catch (IOException ex) {
-               System.out.print(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.print(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void retour(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccueilAjoutVehiculeFXML.fxml"));
+            Parent root = loader.load();
+            retour.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.print(ex.getMessage());
         }
     }
 }

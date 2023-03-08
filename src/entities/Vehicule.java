@@ -5,57 +5,64 @@
  */
 package entities;
 
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author USER
  */
 public class Vehicule {
-    
-     private int id, annee, capacite;
-     private String marque, modele,matricule;
-     private TYPE_VEHICULE type;
-     private Remorque remorque;
-     private Utilisateur utilisateur;
 
-    public Vehicule(int annee, int capacite, String marque, String modele, TYPE_VEHICULE type ,Remorque remorque,Utilisateur utilisateur, String matricule) {
+    private int id, annee, capacite;
+    private String marque, modele, couleur, statut, matricule;
+    private TYPE_VEHICULE type;
+    private Remorque remorque;
+    private Utilisateur utilisateur;
+
+    public Vehicule(int annee, int capacite, String marque, String modele, TYPE_VEHICULE type, Remorque remorque, Utilisateur utilisateur, String matricule, String couleur, String statut) {
         this.annee = annee;
         this.capacite = capacite;
         this.marque = marque;
         this.modele = modele;
         this.type = type;
-        this.remorque=remorque;
-        this.utilisateur=utilisateur;
+        this.remorque = remorque;
+        this.utilisateur = utilisateur;
         this.matricule=matricule;
+        this.couleur = couleur;
+        this.statut = statut;
     }
 
-    public Vehicule(int annee, int capacite, String marque, String modele, TYPE_VEHICULE type, Utilisateur utilisateur,String matricule) {
+    public Vehicule(int annee, int capacite, String marque, String modele, TYPE_VEHICULE type, Utilisateur utilisateur, String matricule, String couleur, String statut) {
         this.annee = annee;
         this.capacite = capacite;
         this.marque = marque;
         this.modele = modele;
         this.type = type;
         this.utilisateur = utilisateur;
-                this.matricule=matricule;
-
+        this.matricule=matricule;
+        this.couleur = couleur;
+        this.statut = statut;
     }
 
-     
-    
     public Vehicule() {
     }
 
-    public Vehicule(int id, int annee, int capacite, String marque, String modele, TYPE_VEHICULE type,Remorque remorque,Utilisateur utilisateur, String matricule) {
+    public Vehicule(int id, int annee, int capacite, String marque, String modele, TYPE_VEHICULE type, Remorque remorque, Utilisateur utilisateur, String matricule, String couleur, String statut) {
         this.id = id;
         this.annee = annee;
         this.capacite = capacite;
         this.marque = marque;
         this.modele = modele;
         this.type = type;
-        this.remorque=remorque;
-        this.utilisateur=utilisateur;
+        this.remorque = remorque;
+        this.utilisateur = utilisateur;
         this.matricule=matricule;
+        this.couleur = couleur;
+        this.statut = statut;
     }
-       
+
+    
+
     public int getId() {
         return id;
     }
@@ -79,7 +86,7 @@ public class Vehicule {
     public void setModele(String modele) {
         this.modele = modele;
     }
-    
+
     public int getAnnee() {
         return annee;
     }
@@ -103,7 +110,7 @@ public class Vehicule {
     public void setType(TYPE_VEHICULE type) {
         this.type = type;
     }
-       
+
     public int getCapacite() {
         return capacite;
     }
@@ -128,16 +135,26 @@ public class Vehicule {
         this.matricule = matricule;
     }
 
+    public String getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
     @Override
     public String toString() {
-        return "Vehicule{" + "id=" + id + ", annee=" + annee + ", capacite=" + capacite + ", marque=" + marque + ", modele=" + modele + ", matricule=" + matricule + ", type=" + type + ", remorque=" + remorque + ", utilisateur=" + utilisateur + '}';
+        return "Vehicule{" + "id=" + id + ", annee=" + annee + ", capacite=" + capacite + ", marque=" + marque + ", modele=" + modele + ", couleur=" + couleur + ", statut=" + statut + ", matricule=" + matricule + ", type=" + type + ", remorque=" + remorque + ", utilisateur=" + utilisateur + '}';
     }
-    
-    
 
    
-    
-
-  
-
-   }
+}

@@ -4,43 +4,52 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="119.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherVehiculeFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherVehiculeFXMLController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="65.0" style="-fx-background-color: #001D6E;" />
-      <ImageView fitHeight="150.0" fitWidth="91.0" layoutX="594.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true">
+      <VBox prefHeight="650.0" prefWidth="65.0" style="-fx-background-color: #001D6E;" />
+      <ImageView fitHeight="150.0" fitWidth="91.0" layoutX="809.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logo-pi-final.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="14.0" layoutY="49.0" prefHeight="287.0" prefWidth="630.0">
+      <TableView fx:id="table" layoutX="19.0" layoutY="169.0" prefHeight="359.0" prefWidth="947.0">
         <columns>
-            <TableColumn fx:id="id" prefWidth="34.0" text="ID" />
-          <TableColumn fx:id="matricule" prefWidth="76.0" text="Matricule" />
-          <TableColumn fx:id="annee" prefWidth="58.0" text="Annee" />
-            <TableColumn fx:id="capacite" prefWidth="73.0" text="Capacite" />
-            <TableColumn fx:id="marque" prefWidth="64.0" text="Marque" />
-            <TableColumn fx:id="modele" prefWidth="64.0" text="Modele" />
-            <TableColumn fx:id="type" prefWidth="43.0" text="Type" />
-            <TableColumn fx:id="remorque" prefWidth="83.0" text="Remorque" />
-            <TableColumn fx:id="Delete" prefWidth="55.0" text="Delete" />
-            <TableColumn fx:id="Modifier" prefWidth="95.0" text="Modifier" />
+            <TableColumn fx:id="idVehicule" prefWidth="55.0" text="Id" visible="false" />
+          <TableColumn fx:id="matricule" prefWidth="97.0" text="Matricule" />
+          <TableColumn fx:id="annee" prefWidth="83.0" text="Annee" />
+            <TableColumn fx:id="capacite" prefWidth="96.0" text="Capacite" />
+            <TableColumn fx:id="marque" prefWidth="68.0" text="Marque" />
+            <TableColumn fx:id="couleur" prefWidth="100.0" text="Couleur" />
+            <TableColumn fx:id="modele" prefWidth="95.0" text="Modele" />
+            <TableColumn fx:id="type" prefWidth="54.0" text="Type" />
+            <TableColumn fx:id="remorque" prefWidth="104.0" text="Remorque" />
+            <TableColumn fx:id="statut" prefWidth="69.0" text="Statut" />
+            <TableColumn fx:id="Delete" prefWidth="67.0" text="Delete" />
+            <TableColumn fx:id="Modifier" prefWidth="130.0" text="Modifier" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" layoutX="163.0" layoutY="10.0" prefHeight="39.0" prefWidth="261.0" text="   Liste des véhicules" textAlignment="RIGHT" textFill="#212be4">
+      <Label alignment="CENTER" layoutX="279.0" layoutY="23.0" prefHeight="53.0" prefWidth="413.0" text="   Liste des véhicules" textFill="#212be4">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="retour" defaultButton="true" layoutX="33.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="99.0" text="Retour" textFill="#3407fa">
+       <Button fx:id="retour" defaultButton="true" layoutX="34.0" layoutY="565.0" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="99.0" text="Retour" textFill="#3407fc">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="AjouterV" defaultButton="true" layoutX="855.0" layoutY="565.0" mnemonicParsing="false" onAction="#AjouterV" prefHeight="31.0" prefWidth="99.0" text="Ajouter" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="recherchertxt" layoutX="655.0" layoutY="105.0" prefHeight="31.0" prefWidth="186.0" promptText="Rechercher..." />
    </children>
 </AnchorPane>

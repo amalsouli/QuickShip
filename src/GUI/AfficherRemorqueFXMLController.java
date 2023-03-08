@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import services.RemorqueServices;
 import services.VehiculeServices;
@@ -45,8 +49,6 @@ public class AfficherRemorqueFXMLController implements Initializable {
     RemorqueServices remorqueServ = new RemorqueServices();
     ObservableList<Remorque> listRemorque = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<Remorque, Integer> identifiantR;
-    @FXML
     private TableColumn<Remorque, Integer>longueurR;
     @FXML
     private TableColumn<Remorque, Integer> largeurR;
@@ -60,6 +62,11 @@ public class AfficherRemorqueFXMLController implements Initializable {
     private TableColumn<Remorque, Button> modifier;
     @FXML
     private Button retourR;
+    @FXML
+    private Button ajouterR;
+    @FXML
+    private TextField recherchertxtRemorque;
+    private final SimpleStringProperty filtre = new SimpleStringProperty("");
 
     /**
      * Initializes the controller class.
@@ -67,26 +74,41 @@ public class AfficherRemorqueFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        List list = remorqueServ.afficher();
+        List<Remorque> list = remorqueServ.afficher();
         listRemorque.addAll(list);
 
-        identifiantR.setCellValueFactory(new PropertyValueFactory<>("id_remorque"));
+       // identifiantR.setCellValueFactory(new PropertyValueFactory<>("id_remorque"));
         largeurR.setCellValueFactory(new PropertyValueFactory<>("largeur"));
         longueurR.setCellValueFactory(new PropertyValueFactory<>("longueur"));
         capaciteR.setCellValueFactory(new PropertyValueFactory<>("capacite"));
         marqueR.setCellValueFactory(new PropertyValueFactory<>("marque"));
-                couleurR.setCellValueFactory(new PropertyValueFactory<>("couleur"));
+        couleurR.setCellValueFactory(new PropertyValueFactory<>("couleur"));
 
 
         this.delete();
         this.modifier();
         table.setItems(listRemorque);
+        
+        recherchertxtRemorque.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtre.set(newValue);
+        });
+        Predicate<Remorque> filtrePersonnes = remorque
+                -> filtre.get().isEmpty()
+                || (remorque.getLongueur() + "").contains(filtre.get().toLowerCase())
+                || (remorque.getLargeur() + "").contains(filtre.get().toLowerCase())
+                || (remorque.getCapacite() + "").contains(filtre.get().toLowerCase())       
+                || remorque.getMarque().toLowerCase().contains(filtre.get().toLowerCase())              
+                ||(remorque.getCouleur()).toLowerCase().contains(filtre.get().toLowerCase());
+        listRemorque.setAll(list.stream().filter(filtrePersonnes).collect(Collectors.toList()));
+        filtre.addListener((observable, oldValue, newValue) -> {
+            listRemorque.setAll(list.stream().filter(filtrePersonnes).collect(Collectors.toList()));
+        });
     }
 
     @FXML
     private void retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeRemorqueFXMLfxml.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccueilFXML.fxml"));
             Parent root = loader.load();
             retourR.getScene().setRoot(root);
         } catch (IOException ex) {
@@ -145,6 +167,17 @@ public class AfficherRemorqueFXMLController implements Initializable {
             };
         });
 
+    }
+
+    @FXML
+    private void ajouterR(ActionEvent event) {
+        try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/HomeRemorqueFXMLfxml.fxml"));
+                Parent root = loader.load();
+                ajouterR.getScene().setRoot(root);
+            } catch (IOException ex) {
+                System.out.print(ex.getMessage());
+            }
     }
 
 }
