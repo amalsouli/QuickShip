@@ -5,10 +5,13 @@
  */
 package gui;
 
+import Entities.CheckPoint;
 import Entities.Conducteur;
 import Entities.Trajet;
 import Entities.Vehicule;
+import Services.CheckService;
 import Services.TrajetService;
+import Services.VehiculeServices;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -49,16 +52,20 @@ public class UpdateTrajetController implements Initializable {
     private ComboBox<Conducteur> conducteur;
     @FXML
     private ComboBox<Vehicule> vehicule;
-     private List<Conducteur> conducteurs = new ArrayList<>();
-    private List<Vehicule> vehicules = new ArrayList<>();
+    private List<Conducteur> conducteurs = new ArrayList<>();
+    private List<Vehicule> vehicules = new VehiculeServices().afficher();
+    private List<String> etats = new ArrayList<>();
     private ObservableList<Conducteur> observableConducteurs = FXCollections.observableList(conducteurs);
     private ObservableList<Vehicule> observableVehicules = FXCollections.observableList(vehicules);
+    private ObservableList<String> observableetat = FXCollections.observableArrayList();
     @FXML
     private TextField id;
     @FXML
     private Text text1;
     @FXML
     private Button retour;
+    @FXML
+    private ComboBox<String> etat;
 
     /**
      * Initializes the controller class.
@@ -67,13 +74,19 @@ public class UpdateTrajetController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       observableConducteurs.add(new Conducteur(1,"selim"));
-        observableVehicules.add(new Vehicule(1,"xxx"));
-        observableVehicules.add(new Vehicule(3,"aaa"));
+       observableConducteurs.add(new Conducteur(1,"selim","54076532","selimsahli2000@gmail.com"));
+        
+       // etats.add("En Cours");
+       // etats.add("Terminé");
+         observableetat.add("En cours");
+         observableetat.add("terminé");
         
         conducteur.setItems(observableConducteurs);
         vehicule.setItems(observableVehicules);
+        etat.setItems(observableetat);
+       
         id.setDisable(true);
+        id.setVisible(false);
     }    
 
     @FXML
@@ -89,6 +102,7 @@ public class UpdateTrajetController implements Initializable {
         Vehicule vehicule1 = vehicule.getValue();
         TrajetService ts=new TrajetService();
         java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
+        
         
         boolean a=true;
          
@@ -110,17 +124,28 @@ public class UpdateTrajetController implements Initializable {
             }
            
         }*/
-        if(point_dép.getText().isEmpty()||selectedDate.isBefore(currentDate)||conducteur.getSelectionModel().getSelectedIndex() == -1||vehicule.getSelectionModel().getSelectedIndex() == -1)
+      /*  if(point_dép.getText().isEmpty()||selectedDate.isBefore(currentDate)||conducteur.getSelectionModel().getSelectedIndex() == -1||vehicule.getSelectionModel().getSelectedIndex() == -1)
         {
             a=false;
             Alert alert = new Alert(Alert.AlertType.ERROR, "Vous devez remplir ce champ: " );
                 alert.showAndWait();
                
-        }
-        Trajet t =new Trajet(ide,datee,point,vehicule1,conducteur1);
-        if(a==true)
-        {
+        }*/
+        Trajet t =new Trajet(ide,datee,point,vehicule1,conducteur1,etat.getValue());
+        //if(a==true)
+        
+        CheckService s1=new CheckService();
         ts.modifier(t);
+        if(etat.getValue().equals("terminé"))
+        {
+            for(CheckPoint cp:s1.afficher())
+            {
+                if(cp.getTrajet().getId()==ide)
+                {
+                    s1.mod(cp);
+                }
+            }
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("listee.fxml"));
         
                         Parent root=loader.load();
@@ -128,16 +153,18 @@ public class UpdateTrajetController implements Initializable {
                           Scene scene = ajout.getScene();
                           scene.setRoot(parent);
         System.out.println(t.getConducteur().getId());
-        }
+    
+    
         
     }
-    public void setTrajet(String point,LocalDate datee,Vehicule V,Conducteur C,String idi)
+    public void setTrajet(String point,LocalDate datee,Vehicule V,Conducteur C,String idi,String en)
     {
        date.setValue(datee);
        point_dép.setText(point);
        conducteur.setValue(C);
        vehicule.setValue(V);
        id.setText(idi);
+       etat.setValue(en);
     }
 
     @FXML

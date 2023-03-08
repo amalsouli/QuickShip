@@ -14,6 +14,8 @@ import java.util.Objects;
 public class Conducteur {
     private int id;
     private String nom;
+    private String tel;
+    private String email;
 
     @Override
     public String toString() {
@@ -48,9 +50,11 @@ public class Conducteur {
     }
     
 
-    public Conducteur(int id, String nom) {
+    public Conducteur(int id, String nom,String tel,String email) {
         this.id = id;
         this.nom = nom;
+        this.tel=tel;
+        this.email=email;
     }
     
     
@@ -73,5 +77,23 @@ public class Conducteur {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     
 }

@@ -29,8 +29,8 @@ public class CheckService {
         cnx = MyDB.getInstance().getCnx();
     }
      public void ajouter(CheckPoint C) throws SQLException {
-           String req = "INSERT INTO chekh_point(`heure`,`minute`,`id_trajet`,`destination`,`etat`) VALUES("
-                +  C.getHeure() + "," + C.getMin()+ "," + C.getTrajet().getId()+ ",'"+C.getAdresse()+"',"+1+")";
+           String req = "INSERT INTO chekh_point(`destination`,`etat`) VALUES('"
+                 +C.getAdresse()+"',"+1+");";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
     }
@@ -47,12 +47,18 @@ public class CheckService {
              c.setMin(rs.getInt("minute"));
              c.setAdresse(rs.getString("destination"));
              TrajetService ts =new TrajetService();
+             Trajet ttt = new Trajet();
              for(Trajet t:ts.afficher())
                      {
-                       if(t.getId()==rs.getInt("id_trajet"));
-                       c.setTrajet(t);
-                       c.setDate(t.getDate());
+                       if(t.getId()==rs.getInt("id_trajet")){
+                      ttt.setId(rs.getInt("id_trajet"));
+                      ttt.setDate(t.getDate());
+                       
+                       }
+                       c.setTrajet(ttt);
+                       c.setDate(ttt.getDate());
                      }
+              
              ch.add(c);
              
          }
@@ -66,6 +72,14 @@ public class CheckService {
         System.out.println("rowsdeleted"+rowsDeleted);
         return true;
     }
+       public void mod(CheckPoint C) throws SQLException
+       {
+            String req="update  chekh_point SET `HEURE` = '0',`Minute` = '0',id_trajet=NULL where id_check="+C.getId()+";";
+            Statement st = cnx.createStatement();
+            int rowsDeleted = st.executeUpdate(req);
+            System.out.println("rowsdeleted"+rowsDeleted);
+           
+       }
        public void modifier_check(CheckPoint C) throws SQLException
        {
            String req = "UPDATE chekh_point SET Heure = ?,Minute = ?,id_trajet = ?,destination= ? where id_check = ?";

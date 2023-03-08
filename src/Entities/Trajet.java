@@ -19,20 +19,22 @@ public class Trajet {
     private Vehicule Vehicule;
     private Conducteur Conducteur;
     private int etat;
+    private String etatTraj;
     private ArrayList<Commande>commandes;
 
     @Override
     public String toString() {
-        return "Trajet{" + "id=" + id + ", date=" + date + ", point_dep=" + point_dep + ", Vehicule=" + Vehicule + ", Conducteur=" + Conducteur + ", commandes=" + commandes + '}';
+        return "Trajet{" + "id=" + id + ", date=" + date + ", point_dep=" + point_dep + ", Vehicule=" + Vehicule + ", Conducteur=" + Conducteur +",etatTraj="+ etatTraj+", commandes=" + commandes + '}';
     }
 
-    public Trajet(int id, Date date, String point_dep, Vehicule Vehicule, Conducteur Conducteur) {
+    public Trajet(int id, Date date, String point_dep, Vehicule Vehicule, Conducteur Conducteur,String etat) {
         this.id = id;
         this.date = date;
         this.point_dep = point_dep;
         this.Vehicule = Vehicule;
         this.Conducteur = Conducteur;
         this.commandes = commandes;
+        this.etatTraj=etat;
     }
     
     
@@ -103,6 +105,14 @@ public class Trajet {
 
     public void setEtat(int etat) {
         this.etat = etat;
+    }
+
+    public String getEtatTraj() {
+        return etatTraj;
+    }
+
+    public void setEtatTraj(String etatTraj) {
+        this.etatTraj = etatTraj;
     }
     
     

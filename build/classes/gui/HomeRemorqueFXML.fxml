@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.net.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeRemorqueFXMLController">
+    <stylesheets>
+        <URL value="@homeremorquefxml.css"/>
+    </stylesheets
+   <children>
+      <Label layoutX="262.0" layoutY="173.0" prefHeight="31.0" prefWidth="165.0" text="Longueur :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="267.0" layoutY="243.0" prefHeight="31.0" prefWidth="144.0" text="Largeur :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="267.0" layoutY="317.0" prefHeight="31.0" prefWidth="155.0" text="Capacité :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="267.0" layoutY="456.0" prefHeight="31.0" prefWidth="155.0" text="Couleur :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <TextField fx:id="capaciteR" layoutX="442.0" layoutY="319.0" />
+    
+      <Button fx:id="ajouter" defaultButton="true" layoutX="708.0" layoutY="232.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="51.0" prefWidth="128.0" text="Ajouter" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="afficher" defaultButton="true" layoutX="708.0" layoutY="334.0" mnemonicParsing="false" onAction="#afficher" prefHeight="51.0" prefWidth="128.0" text="Afficher" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="255.0" layoutY="20.0" prefHeight="53.0" prefWidth="427.0" text="Ajouter des remorques" textFill="#0b75ee">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="267.0" layoutY="385.0" prefHeight="31.0" prefWidth="144.0" text="Marque :" textFill="#210f8a" underline="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <TextField fx:id="marqueR" layoutX="442.0" layoutY="387.0" />
+      <VBox layoutX="-45.0" prefHeight="650.0" prefWidth="107.0" style="-fx-background-color: #001D6E;">
+         <effect>
+            <ColorAdjust />
+         </effect>
+      </VBox>
+      <TextField fx:id="longueurR" layoutX="442.0" layoutY="175.0" />
+      <TextField fx:id="largeurR" layoutX="443.0" layoutY="245.0" />
+      <ComboBox fx:id="couleurR" layoutX="442.0" layoutY="458.0" prefHeight="31.0" prefWidth="187.0" />
+      <ImageView fitHeight="123.0" fitWidth="99.0" layoutX="813.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo-pi-final.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="retourA" cancelButton="true" defaultButton="true" layoutX="30.0" layoutY="34.0" mnemonicParsing="false" onAction="#retourA" prefHeight="39.0" prefWidth="100.0" text="Accueil" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -33,6 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -67,6 +68,12 @@ public class Checkpoint_listController implements Initializable {
     private Button retour;
     @FXML
     private Text text1;
+    @FXML
+    private Button btn3;
+    @FXML
+    private TextField rech;
+    @FXML
+    private Button rechercher;
     
     /**
      * Initializes the controller class.
@@ -154,7 +161,8 @@ public class Checkpoint_listController implements Initializable {
         int id=C.getId();
         String myString = Integer.toString(id);
         
-        modifiier.setCheck(destination,heure,minute,t,id);
+        //modifiier.setCheck(destination,heure,minute,t.getDate().toString(),id);
+         modifiier.setCheck1(destination,id);
                            Parent parent = loader.getRoot();
                             
                           Scene scene = b.getScene();
@@ -179,6 +187,21 @@ public class Checkpoint_listController implements Initializable {
                         Parent parent = loader.getRoot();
                           Scene scene = retour.getScene();
                           scene.setRoot(parent);
+    }
+
+    @FXML
+    private void acceuil(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        
+                        Parent root=loader.load();
+                        Parent parent = loader.getRoot();
+                          Scene scene = btn3.getScene();
+                          scene.setRoot(parent);
+    }
+
+    @FXML
+    private void rechercher(ActionEvent event) {
+        
     }
     }    
     

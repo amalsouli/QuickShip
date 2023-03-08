@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -12,18 +13,21 @@
         <URL value="@checkpoint_list.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="table" layoutX="152.0" layoutY="118.0" prefHeight="314.0" prefWidth="703.0">
+      <TableView fx:id="table" layoutX="154.0" layoutY="150.0" prefHeight="314.0" prefWidth="703.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="51.0" text="Id" />
           <TableColumn fx:id="destination" prefWidth="134.0" text="destination" />
             <TableColumn fx:id="heure" prefWidth="79.0" text="heure" />
             <TableColumn fx:id="minutes" prefWidth="99.0" text="minutes" />
-            <TableColumn fx:id="date" prefWidth="122.0" text="Date_trajet" />
             <TableColumn fx:id="supprimer" prefWidth="104.0" text="Supprimer" />
             <TableColumn fx:id="modifer" prefWidth="113.0" text="Modifer" />
+            <TableColumn fx:id="date" prefWidth="122.0" text="Date_trajet" />
         </columns>
       </TableView>
       <Button fx:id="retour" layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#retour" text="Ajouter" />
       <Text fx:id="text1" layoutX="296.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Check Point" wrappingWidth="305.6708984375" />
+      <Button fx:id="btn3" mnemonicParsing="false" onAction="#acceuil" text="&lt;--" />
+      <TextField fx:id="rech" layoutX="18.0" layoutY="92.0" />
+      <Button fx:id="rechercher" layoutX="239.0" layoutY="85.0" mnemonicParsing="false" onAction="#rechercher" text="Rechercher" />
    </children>
 </AnchorPane>

@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,12 +28,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -42,8 +48,7 @@ import javafx.stage.StageStyle;
  */
 public class ListeeController implements Initializable {
 
-      @FXML
-    private TableColumn<Trajet, Integer> id;
+    
     @FXML
     private TableColumn<Trajet, Date> date;
     @FXML
@@ -61,6 +66,7 @@ public class ListeeController implements Initializable {
     TrajetService s=new TrajetService();
     
     ObservableList<Trajet>  StudentList = FXCollections.observableArrayList();
+    ObservableList<Trajet>  StudentList1 = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Trajet, Button> Delete;
     @FXML
@@ -69,22 +75,39 @@ public class ListeeController implements Initializable {
     private AnchorPane retourner;
     @FXML
     private Button retour;
+    @FXML
+    private Text text1;
+    @FXML
+    private Button btn3;
+    @FXML
+    private TextField rech;
+    @FXML
+    private Button rechercher;
+    @FXML
+    private DatePicker daterech;
+    @FXML
+    private TableColumn<Trajet, String> etat;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             List l=s.afficher();
             StudentList.addAll(l);
-        id.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        
         date.setCellValueFactory(new PropertyValueFactory<>("Date"));
         point.setCellValueFactory(new PropertyValueFactory<>("Point_dep"));
-        vehicule.setCellValueFactory(new PropertyValueFactory<>("Vehicule"));
+        vehicule.setCellValueFactory(cellData -> {
+                Vehicule check = cellData.getValue().getVehicule();
+                return new SimpleStringProperty(check.getMarque());
+            });
+      //  vehicule.setCellValueFactory(new PropertyValueFactory<>("Vehicule"));
         conducteur.setCellValueFactory(new PropertyValueFactory<>("Conducteur"));
+        etat.setCellValueFactory(new PropertyValueFactory<>("etatTraj"));
         trajettable.setItems(StudentList);
         this.delete();
         this.modifier();
         } catch (SQLException ex) {
-            Logger.getLogger(ListtrajetController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(ListeeController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }    
     
     private void delete() {
@@ -145,7 +168,7 @@ public class ListeeController implements Initializable {
         int id=trajet.getId();
         String myString = Integer.toString(id);
         
-        modifiier.setTrajet(nomConducteur,d,V,C,myString);
+        modifiier.setTrajet(nomConducteur,d,V,C,myString,trajet.getEtatTraj());
                            Parent parent = loader.getRoot();
                             
                           Scene scene = b.getScene();
@@ -170,6 +193,49 @@ public class ListeeController implements Initializable {
                         Parent parent = loader.getRoot();
                           Scene scene = retour.getScene();
                           scene.setRoot(parent);
+    }
+
+    @FXML
+    private void acceuil(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        
+                        Parent root=loader.load();
+                        Parent parent = loader.getRoot();
+                          Scene scene = btn3.getScene();
+                          scene.setRoot(parent);
+    }
+
+    @FXML
+    private void recherche(ActionEvent event) throws SQLException {
+        
+        java.sql.Date datee = java.sql.Date.valueOf(daterech.getValue());
+        
+            List<Trajet> l=s.afficher();
+            List<Trajet> l1=l.stream()
+                     .filter(p->p.getDate().equals(datee))
+                     .collect(Collectors.toList());
+            if(l1.isEmpty())
+            {
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Aucun trajet n'existe à cette date" );
+                alert.showAndWait(); 
+                
+                
+            }
+            else
+            {
+                date.setCellValueFactory(new PropertyValueFactory<>("Date"));
+                point.setCellValueFactory(new PropertyValueFactory<>("Point_dep"));
+              vehicule.setCellValueFactory(new PropertyValueFactory<>("Vehicule"));
+        conducteur.setCellValueFactory(new PropertyValueFactory<>("Conducteur"));
+        trajettable.setItems(StudentList1);
+        this.delete();
+        this.modifier(); 
+        StudentList1.addAll(l1);
+           
+            }
+           
+        
     }
     
 }

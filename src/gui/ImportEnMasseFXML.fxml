@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.net.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ImportEnMasseFXMLController">
+    <stylesheets>
+        <URL value="@importenmassefxml.css"/>
+    </stylesheets>
+   <children>
+      <VBox layoutY="-9.0" prefHeight="661.0" prefWidth="75.0" style="-fx-background-color: #001D6E;" />
+     
+                                                 <Button fx:id="importButton" defaultButton="true" layoutX="536.0" layoutY="346.0" mnemonicParsing="false" onAction="#importFile" prefHeight="39.0" prefWidth="214.0" text="Importer fichier" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="telechargerB" defaultButton="true" layoutX="536.0" layoutY="164.0" mnemonicParsing="false" onAction="#downloadFile" prefHeight="39.0" prefWidth="214.0" text="Télécharger template " textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="233.0" layoutY="143.0" prefHeight="303.0" prefWidth="316.0" text="Télécharger template:&#10;&#10;&#10;&#10;&#10;Importer fichier:&#10;&#10;" textFill="#0c0a68" wrapText="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Button fx:id="retour" defaultButton="true" layoutX="39.0" layoutY="515.0" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="99.0" text="Retour" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="787.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo-pi-final.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="248.0" layoutY="35.0" prefHeight="53.0" prefWidth="505.0" text="Ajouter plusieurs véhicules" textAlignment="RIGHT" textFill="#212be4">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="79.0" fitWidth="106.0" layoutX="138.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@excel-g89873d1fe_1280.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="158.0" fitWidth="123.0" layoutX="131.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@import.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="559.0" layoutY="406.0" prefHeight="140.0" prefWidth="383.0" text="&#10;Pour ajouter plusieurs véhicules:&#10;     -Télécharger Template&#10;     -Remplir les données des véhicules sous forme de tableau&#10;     -Importer le fichier&#10;" textFill="#0c0a68" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="afficher" defaultButton="true" layoutX="816.0" layoutY="254.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="126.0" text="Afficher" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.net.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FrontFXMLController">
+    <stylesheets>
+        <URL value="@frontfxml.css"/>
+    </stylesheets>
+    <children>
+      <ImageView fitHeight="150.0" fitWidth="91.0" layoutX="895.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo-pi-final.png" />
+         </image>
+      </ImageView>
+      <VBox layoutY="-7.0" prefHeight="671.0" prefWidth="46.0" style="-fx-background-color: #001D6E;" />
+      <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="87.0" prefHeight="522.0" prefWidth="937.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="505.0" prefWidth="994.0">
+               <children>
+                  <VBox fx:id="cardContainer" layoutX="-7.0" layoutY="2.0" prefHeight="496.0" prefWidth="923.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

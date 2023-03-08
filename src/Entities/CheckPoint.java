@@ -23,12 +23,16 @@ public class CheckPoint {
 
     @Override
     public String toString() {
-        return "CheckPoint{" + "id=" + id + ", adresse=" + adresse + ", heure=" + heure + ", min=" + min + ", cms=" + cms + ", date=" + trajet.getDate().toString() + '}';
+        return "CheckPoint{" + "id=" + id + ", adresse=" + adresse + ", heure=" + heure + ", min=" + min + ", cms=" + cms + ", date=" + trajet.getDate() + '}';
     }
 
     public CheckPoint() {
     }
 
+    public CheckPoint(String adresse) {
+        this.adresse = adresse;
+    }
+   
     public CheckPoint(String adresse, int heure, int min, Trajet trajet) {
         this.adresse = adresse;
         this.heure = heure;

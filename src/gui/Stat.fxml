@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.net.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatController">
+    <stylesheets>
+        <URL value="@stat.css"/>
+    </stylesheets>
+    <children>
+      <PieChart fx:id="pieChart" layoutX="65.0" layoutY="14.0" prefHeight="292.0" prefWidth="456.0" />
+      <Label fx:id="label" layoutX="114.0" layoutY="340.0" prefHeight="42.0" prefWidth="335.0" textAlignment="CENTER" textFill="#0114e1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="retour" layoutX="476.0" layoutY="349.0" mnemonicParsing="false" onAction="#retourtoafM" text="Retour" />
+   </children>
+</AnchorPane>

@@ -10,12 +10,18 @@ import Entities.Conducteur;
 import Entities.Trajet;
 import Entities.Vehicule;
 import Services.CheckService;
+import Services.TrajetService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +47,7 @@ public class UpdateCheckController implements Initializable {
     @FXML
     private TextField minute;
     @FXML
-    private ComboBox<Trajet> date;
+    private ComboBox<String> date;
     @FXML
     private Button modifier;
     @FXML
@@ -50,6 +56,9 @@ public class UpdateCheckController implements Initializable {
     private Text text1;
     @FXML
     private Button retour;
+    private ObservableList<Trajet> dates = FXCollections.observableArrayList();
+    TrajetService ts =new TrajetService();
+
 
     /**
      * Initializes the controller class.
@@ -57,23 +66,52 @@ public class UpdateCheckController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         id.setDisable(true);
+         try {
+            // TODO
+            for(Trajet t:ts.afficher())
+            {
+                 dates.add(t);
+            }
+                
+                } catch (SQLException ex) {
+            Logger.getLogger(AjoutCheckController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ObservableList<String> li=dates.stream().map(c->c.getDate().toString()).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        date.setItems(li);
+        
         // TODO
     }  
     
     
-      public void setCheck(String destinationn,int  heures,int minutes,Trajet t,int idi)
+      public void setCheck(String destinationn,int  heures,int minutes,String t,int idi)
     {
        destination.setText(destinationn);
        heure.setText(Integer.toString(heures));
        minute.setText(Integer.toString(minutes));
+      
        date.setValue(t);
        id.setText(Integer.toString(idi));
     }
+      public void setCheck1(String destinationn,int idi)
+      {
+           destination.setText(destinationn);
+           id.setText(Integer.toString(idi));
+       
+      }
 
     @FXML
     private void modifier(ActionEvent event) throws SQLException, IOException {
-          
-        Trajet t = date.getValue();
+           Trajet x=null;
+        for(Trajet tr : dates)
+        {
+            if(tr.getDate().toString().equals(date.getValue()))
+            {
+                x=tr;
+            }
+            
+        }
+        
+      
         
         String des = destination.getText();
         int ide=Integer.parseInt(id.getText());
@@ -82,9 +120,9 @@ public class UpdateCheckController implements Initializable {
         int h=Integer.parseInt(heure.getText());
         int m=Integer.parseInt(minute.getText());
         CheckService s=new CheckService();
-        CheckPoint p =new CheckPoint(ide,des,h,m,t);
+        CheckPoint p =new CheckPoint(ide,des,h,m,x);
         s.modifier_check(p);
-        System.out.println(t.getConducteur().getId());
+        System.out.println(x.getConducteur().getId());
          FXMLLoader loader = new FXMLLoader(getClass().getResource("checkpoint_list.fxml"));
           Parent root=loader.load();
           Parent parent = loader.getRoot();

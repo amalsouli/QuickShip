@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCommandeClientController">
+    <stylesheets>
+        <URL value="@affichercommandeclient.css"/>
+    </stylesheets>
+    <children>
+
+      <Label layoutX="240.0" layoutY="27.0" prefHeight="32.0" prefWidth="195.0" text="Mes Commandes" textFill="#ff4204">
+         <font>
+            <Font name="Britannic Bold" size="24.0" />
+         </font>
+      </Label>
+      <VBox fx:id="cardContainer" layoutX="83.0" layoutY="130.0" prefHeight="289.0" prefWidth="578.0" />
+      <VBox layoutX="-14.0" layoutY="-4.0" prefHeight="498.0" prefWidth="74.0" style="-fx-background-color: #ff4204;" />
+      <TextField fx:id="search" layoutX="512.0" layoutY="73.0" promptText="Search..." />
+   </children>
+</AnchorPane>

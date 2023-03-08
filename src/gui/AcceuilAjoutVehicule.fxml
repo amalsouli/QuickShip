@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.net.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AcceuilAjoutVehiculeController">
+    <stylesheets>
+        <URL value="@acceuilajoutvehicule.css"/>
+    </stylesheets>
+    <children>
+      <ImageView fitHeight="744.0" fitWidth="1179.0" layoutX="-88.0" layoutY="-37.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@arrierePlan.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="984.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo-pi-final.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="AjouterV1" defaultButton="true" layoutX="206.0" layoutY="539.0" mnemonicParsing="false" onAction="#AjouterV1" prefHeight="51.0" prefWidth="259.0" text="Ajouter un véhicules" textFill="#001d6e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#080672" height="75.04" radius="38.2825" width="80.09">
+               <input>
+                  <DropShadow />
+               </input>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <Button fx:id="AjouterVp" defaultButton="true" layoutX="655.0" layoutY="539.0" mnemonicParsing="false" onAction="#AjouterVp" prefHeight="51.0" prefWidth="266.0" text="Ajouter plusieurs véhicules" textFill="#001d6e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#080770" height="69.99" radius="37.019999999999996" width="80.09">
+               <input>
+                  <DropShadow />
+               </input>
+            </InnerShadow>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <Button fx:id="retour" defaultButton="true" layoutX="37.0" layoutY="30.0" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="99.0" text="Retour" textFill="#3407fc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

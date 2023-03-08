@@ -29,8 +29,8 @@ public class TrajetService {
     }
     
     public void ajouter(Trajet t) throws SQLException {
-           String req = "INSERT INTO trajets(`date_depart`,`point_depart`,`vehicule_id`,`utilisateur_id`,`etat`) VALUES("
-                + "'" + t.getDate() + "','" + t.getPoint_dep() + "'," + t.getVehicule().getId()+"," +t.getConducteur().getId()+","+1+ ")";
+           String req = "INSERT INTO trajets(`date_depart`,`point_depart`,`vehicule_id`,`utilisateur_id`,`etat`,`etatTraj`) VALUES("
+                + "'" + t.getDate() + "','" + t.getPoint_dep() + "'," + t.getVehicule().getId()+"," +t.getConducteur().getId()+","+1+ ",'En cours')";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
     }
@@ -39,7 +39,7 @@ public class TrajetService {
         
         List<Trajet> tra = new ArrayList<>();
        // String s = "select * from trajets";
-        String s="SELECT trajets.id,trajets.date_depart,trajets.point_depart,trajets.utilisateur_id,trajets.vehicule_id,vehicule.modele,utilisateur.id,utilisateur.nom "
+        String s="SELECT trajets.id,trajets.date_depart,trajets.point_depart,trajets.utilisateur_id,trajets.vehicule_id,trajets.etatTraj,vehicule.modele,utilisateur.id,utilisateur.nom "
                 + "FROM trajets join vehicule on trajets.vehicule_id=vehicule.id "
                 + "JOIN utilisateur on utilisateur.id=trajets.utilisateur_id where trajets.etat=1; " ;    
         Statement st = cnx.createStatement();
@@ -54,6 +54,7 @@ public class TrajetService {
             String marque=rs.getString("modele");
             int idc=rs.getInt("utilisateur_id");
             String nom=rs.getString("nom");
+            t.setEtatTraj(rs.getString("etatTraj"));
             Conducteur c =new Conducteur();
             Vehicule v =new Vehicule();
             v.setId(id);
@@ -78,13 +79,14 @@ public class TrajetService {
        {
            
     
-        String req = "UPDATE trajets SET date_depart = ?,point_depart = ?,vehicule_id=?,utilisateur_id=? where id = ?";
+        String req = "UPDATE trajets SET date_depart = ?,point_depart = ?,vehicule_id=?,utilisateur_id=?,etatTraj=? where id = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setDate(1, t.getDate());
         ps.setString(2, t.getPoint_dep());
         ps.setInt(3, t.getVehicule().getId());
         ps.setInt(4, t.getConducteur().getId());
-        ps.setInt(5, t.getId());
+        ps.setString(5, t.getEtatTraj());
+        ps.setInt(6, t.getId());
         ps.executeUpdate();
         
     }

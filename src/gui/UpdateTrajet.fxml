@@ -16,7 +16,7 @@
         <URL value="@Updatetrajet.css" />
     </stylesheets>
      <children>
-      <Button id="ajout" fx:id="ajout" layoutX="399.0" layoutY="378.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Button id="ajout" fx:id="ajout" layoutX="395.0" layoutY="426.0" mnemonicParsing="false" onAction="#ajouter" text="Modifier" />
       <DatePicker id="date" fx:id="date" layoutX="372.0" layoutY="138.0" />
       <Label graphicTextGap="8.0" layoutX="200.0" layoutY="145.0" prefHeight="18.0" prefWidth="59.0" text="   Date" />
       <TextField id="dep" fx:id="point_dép" layoutX="372.0" layoutY="200.0" />
@@ -31,8 +31,9 @@
             <Image url="@../Image/log.png" />
          </image>
       </ImageView>
-      <Label layoutX="212.0" layoutY="91.0" text="Id Trajet " />
       <Text fx:id="text1" layoutX="358.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier trajet" wrappingWidth="179.0000004172325" />
       <Button fx:id="retour" layoutY="2.0" mnemonicParsing="false" onAction="#retour" text="&lt;--" />
+      <Label layoutX="214.0" layoutY="376.0" prefHeight="20.0" prefWidth="36.0" text="Etat" />
+      <ComboBox fx:id="etat" layoutX="372.0" layoutY="371.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

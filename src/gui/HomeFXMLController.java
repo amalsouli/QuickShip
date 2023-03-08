@@ -8,7 +8,10 @@ package gui;
 import Entities.Conducteur;
 import Entities.Trajet;
 import Entities.Vehicule;
+import Services.SMSUtil;
+import Services.Send_Mail;
 import Services.TrajetService;
+import Services.VehiculeServices;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,6 +19,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,7 +45,7 @@ import javafx.scene.text.Text;
 public class HomeFXMLController implements Initializable {
      
     private List<Conducteur> conducteurs = new ArrayList<>();
-    private List<Vehicule> vehicules = new ArrayList<>();
+    private List<Vehicule> vehicules = new VehiculeServices().afficher();
     private ObservableList<Conducteur> observableConducteurs = FXCollections.observableList(conducteurs);
     private ObservableList<Vehicule> observableVehicules = FXCollections.observableList(vehicules);
 
@@ -50,7 +54,7 @@ public class HomeFXMLController implements Initializable {
     @FXML
     private TextField point_dép;
     @FXML
-    private ComboBox<Vehicule> vehicule;
+    private ComboBox<String> vehicule;
     @FXML
     private ComboBox<Conducteur> conducteur;
     @FXML
@@ -73,21 +77,32 @@ public class HomeFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        observableConducteurs.add(new Conducteur(1,"selim"));
-        observableVehicules.add(new Vehicule(1,"xx"));
+        observableConducteurs.add(new Conducteur(1,"selim","54076532","selimsahli2000@gmail.com"));
         
+        ObservableList<String> listeCategorie = observableVehicules.stream()
+                .map(v->v.getMatricule())
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
         conducteur.setItems(observableConducteurs);
-        vehicule.setItems(observableVehicules);
+        vehicule.setItems(listeCategorie);
+        
     }    
 
     @FXML
-    private void ajouter(ActionEvent event) throws SQLException, IOException {
+    private void ajouter(ActionEvent event) throws SQLException, IOException, Exception {
         LocalDate currentDate = LocalDate.now();
         LocalDate selectedDate = date.getValue();
         //java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
         String point = point_dép.getText();
         Conducteur conducteur1 = conducteur.getValue();
-        Vehicule vehicule1 = vehicule.getValue();
+                    String cat = vehicule.getValue();
+            Vehicule catt = null;
+            for (Vehicule categorie : observableVehicules) {
+                if (categorie.getMatricule().equals(cat)) {
+                    catt = categorie;
+                    
+                }
+            }
+        
         TrajetService ts=new TrajetService();
         boolean a=true;
         
@@ -102,7 +117,7 @@ public class HomeFXMLController implements Initializable {
                 alert.showAndWait();
                 
             }
-            if(t.getDate().toString().equals(date.getValue().toString())&& t.getVehicule().equals(vehicule1))
+            if(t.getDate().toString().equals(date.getValue().toString())&& t.getVehicule().equals(catt))
             {
                 a=false;
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Le conducteur ne peut pas avoir deux trajet à la méme date " );
@@ -144,8 +159,10 @@ public class HomeFXMLController implements Initializable {
         if(a==true)
         {
             java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
-            Trajet t =new Trajet(datee,point,vehicule1,conducteur1);
+            Trajet t =new Trajet(datee,point,catt,conducteur1);
             ts.ajouter(t);
+            //SMSUtil.sendSMS("+216"+conducteur1.getTel(),"Vous avez un trajet à faire de "+point +"le "+datee);
+            Send_Mail.sendEmail(conducteur1.getEmail(), "Trajet", "Bonjour,Vous avez un trajet le "+datee+"de "+point);
          FXMLLoader loader = new FXMLLoader(getClass().getResource("Listee.fxml"));
           Parent root=loader.load();
           Parent parent = loader.getRoot();
