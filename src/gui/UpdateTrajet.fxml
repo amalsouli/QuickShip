@@ -11,29 +11,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="894.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateTrajetController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateTrajetController">
     <stylesheets>
         <URL value="@Updatetrajet.css" />
     </stylesheets>
      <children>
-      <Button id="ajout" fx:id="ajout" layoutX="395.0" layoutY="426.0" mnemonicParsing="false" onAction="#ajouter" text="Modifier" />
-      <DatePicker id="date" fx:id="date" layoutX="372.0" layoutY="138.0" />
-      <Label graphicTextGap="8.0" layoutX="200.0" layoutY="145.0" prefHeight="18.0" prefWidth="59.0" text="   Date" />
-      <TextField id="dep" fx:id="point_dép" layoutX="372.0" layoutY="200.0" />
-      <Label graphicTextGap="8.0" layoutX="211.0" layoutY="207.0" prefHeight="18.0" prefWidth="79.0" text="Point_dép" />
-      <Label graphicTextGap="8.0" layoutX="212.0" layoutY="262.0" prefHeight="18.0" prefWidth="59.0" text="Vehicule" />
-      <Label graphicTextGap="8.0" layoutX="211.0" layoutY="325.0" prefHeight="18.0" prefWidth="79.0" text="Conducteur" />
-      <ComboBox fx:id="conducteur" layoutX="373.0" layoutY="319.0" prefWidth="150.0" />
-      <ComboBox fx:id="vehicule" layoutX="372.0" layoutY="256.0" prefWidth="150.0" />
-      <TextField fx:id="id" layoutX="372.0" layoutY="84.0" />
+      <Button id="ajout" fx:id="ajout" layoutX="417.0" layoutY="517.0" mnemonicParsing="false" onAction="#ajouter" text="Modifier" />
+      <DatePicker id="date" fx:id="date" layoutX="447.0" layoutY="207.0" />
+      <Label graphicTextGap="8.0" layoutX="275.0" layoutY="214.0" prefHeight="18.0" prefWidth="59.0" text="   Date" />
+      <TextField id="dep" fx:id="point_dép" layoutX="447.0" layoutY="269.0" />
+      <Label graphicTextGap="8.0" layoutX="286.0" layoutY="276.0" prefHeight="18.0" prefWidth="79.0" text="Point_dép" />
+      <Label graphicTextGap="8.0" layoutX="287.0" layoutY="331.0" prefHeight="18.0" prefWidth="59.0" text="Vehicule" />
+      <Label graphicTextGap="8.0" layoutX="286.0" layoutY="394.0" prefHeight="18.0" prefWidth="79.0" text="Conducteur" />
+      <ComboBox fx:id="conducteur" layoutX="448.0" layoutY="388.0" prefWidth="150.0" />
+      <ComboBox fx:id="vehicule" layoutX="447.0" layoutY="325.0" prefWidth="150.0" />
+      <TextField fx:id="id" layoutX="447.0" layoutY="153.0" />
       <ImageView fitHeight="70.0" fitWidth="86.0" layoutX="794.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/log.png" />
          </image>
       </ImageView>
-      <Text fx:id="text1" layoutX="358.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier trajet" wrappingWidth="179.0000004172325" />
+      <Text fx:id="text1" layoutX="380.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier trajet" wrappingWidth="179.0000004172325" />
       <Button fx:id="retour" layoutY="2.0" mnemonicParsing="false" onAction="#retour" text="&lt;--" />
-      <Label layoutX="214.0" layoutY="376.0" prefHeight="20.0" prefWidth="36.0" text="Etat" />
-      <ComboBox fx:id="etat" layoutX="372.0" layoutY="371.0" prefWidth="150.0" />
+      <Label layoutX="289.0" layoutY="445.0" prefHeight="20.0" prefWidth="36.0" text="Etat" />
+      <ComboBox fx:id="etat" layoutX="447.0" layoutY="440.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

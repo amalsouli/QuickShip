@@ -46,7 +46,12 @@ import javafx.stage.StageStyle;
 import Services.CategorieService;
 import Services.CheckService;
 import Services.CommandeService;
+import Services.SMSUtil;
 import java.sql.SQLException;
+import javafx.geometry.Pos;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -166,29 +171,54 @@ public class AjouterCommandeFXMLController implements Initializable {
             int capc1 = Integer.parseInt(capc);
             Commande c = new Commande(datee, ad, np, catt, u, STATUS_COMMANDE.en_attente, checkP,capc1,commandeRapide);
             commSer.ajouter(c);
-            Parent nouvelleVue = FXMLLoader.load(getClass().getResource("AfficherCommandeFXML.fxml"));
+            SMSUtil.sendSMS("+21625166021","votre commande a été ajouter avec succées");
+            this.notif();
+            Parent nouvelleVue = FXMLLoader.load(getClass().getResource("AfficherCommandeClient.fxml"));
             Scene scene = ajouter.getScene();
             scene.setRoot(nouvelleVue);
         } catch (IOException ex) {
             Logger.getLogger(AjouterCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (Exception ex) {
+         Logger.getLogger(AjouterCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }
-
+private void notif(){
+   Notifications notifications=Notifications.create();
+        notifications.graphic(new ImageView());
+        notifications.text("La commande a été ajoutée avec succès le "+LocalDate.now());
+        notifications.title("Success Message");
+        notifications.hideAfter(Duration.seconds(4));
+        /*notifications.darkStyle();*/
+     notifications.position(Pos.BOTTOM_CENTER);
+        notifications.show();
+}
     @FXML
     private void ajouterCheckPoint(ActionEvent event) {
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ajoutCheck.fxml"));
-            Parent root = loader.load();
-            Scene scene = retour.getScene();
-            scene.setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(AjouterCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     try {
+         /*  try {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ajoutCheck.fxml"));
+         Parent root = loader.load();
+         Scene scene = retour.getScene();
+         scene.setRoot(root);
+         } catch (IOException ex) {
+         Logger.getLogger(AjouterCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+         }*/Parent root = FXMLLoader.load(getClass().getResource("ajoutCheck.fxml"));
+         Scene scene = new Scene(root);
+         Stage stage=new Stage();
+         stage.setScene(scene);
+         stage.setHeight(500);
+         stage.setWidth(600);
+        // stage.wait(12);
+         stage.show();
+     } catch (IOException ex) {
+         Logger.getLogger(AjouterCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+     } 
     }
 @FXML
     private void retour(ActionEvent event) {
           try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandeFXML.fxml"));
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommandeClient.fxml"));
             Parent root = loader.load();
             Scene scene = retour.getScene();
             scene.setRoot(root);

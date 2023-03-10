@@ -236,9 +236,9 @@ icon.setFitHeight(16);*/
                         b.setStyle("-fx-background-color: #f0f0f0");
                         b.setOnAction((event) -> {
                             try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailsCommandeFXML.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailsCommandeAdminFXML.fxml"));
                                 Parent root = loader.load();
-                                DetailsCommandeFXMLController details = loader.getController();
+                                DetailsCommandeAdminFXMLController details = loader.getController();
                                 Commande c = tv.getItems().get(getIndex());
 //                                System.out.println(c);
                                 details.setCommande(c);
@@ -252,6 +252,7 @@ icon.setFitHeight(16);*/
                         setGraphic(b);
                     }
                 }
+                
             };
         });
     }
@@ -259,7 +260,7 @@ icon.setFitHeight(16);*/
     @FXML
     private void acceuil(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAdminFXML.fxml"));
             Parent root = loader.load();
             Scene scene = acceuil.getScene();
             scene.setRoot(root);

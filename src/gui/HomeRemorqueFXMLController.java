@@ -154,7 +154,7 @@ public class HomeRemorqueFXMLController implements Initializable {
         if (a == true) {
             rs.ajouter(r);
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficherVehiculeFXML.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherRemorqueFXML.fxml"));
                 Parent root = loader.load();
                 afficher.getScene().setRoot(root);
             } catch (IOException ex) {
@@ -177,7 +177,7 @@ public class HomeRemorqueFXMLController implements Initializable {
     @FXML
     private void retourA(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccueilFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherRemorqueFXML.fxml"));
             Parent root = loader.load();
             retourA.getScene().setRoot(root);
         } catch (IOException ex) {

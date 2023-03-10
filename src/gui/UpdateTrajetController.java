@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,7 +52,7 @@ public class UpdateTrajetController implements Initializable {
     @FXML
     private ComboBox<Conducteur> conducteur;
     @FXML
-    private ComboBox<Vehicule> vehicule;
+    private ComboBox<String> vehicule;
     private List<Conducteur> conducteurs = new ArrayList<>();
     private List<Vehicule> vehicules = new VehiculeServices().afficher();
     private List<String> etats = new ArrayList<>();
@@ -75,14 +76,16 @@ public class UpdateTrajetController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        observableConducteurs.add(new Conducteur(1,"selim","54076532","selimsahli2000@gmail.com"));
-        
+        ObservableList<String> listeCategorie = observableVehicules.stream()
+                .map(v->v.getMatricule())
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
        // etats.add("En Cours");
        // etats.add("Terminé");
          observableetat.add("En cours");
          observableetat.add("terminé");
         
         conducteur.setItems(observableConducteurs);
-        vehicule.setItems(observableVehicules);
+        vehicule.setItems(listeCategorie);
         etat.setItems(observableetat);
        
         id.setDisable(true);
@@ -99,7 +102,14 @@ public class UpdateTrajetController implements Initializable {
         id.setEditable(false);
         id.setDisable(true);
         Conducteur conducteur1 = conducteur.getValue();
-        Vehicule vehicule1 = vehicule.getValue();
+        String vehicule1 = vehicule.getValue();
+            Vehicule catt = null;
+            for (Vehicule categorie : observableVehicules) {
+                if (categorie.getMatricule().equals(vehicule1)) {
+                    catt = categorie;
+                    
+                }
+            }
         TrajetService ts=new TrajetService();
         java.sql.Date datee = java.sql.Date.valueOf(date.getValue());
         
@@ -131,7 +141,7 @@ public class UpdateTrajetController implements Initializable {
                 alert.showAndWait();
                
         }*/
-        Trajet t =new Trajet(ide,datee,point,vehicule1,conducteur1,etat.getValue());
+        Trajet t =new Trajet(ide,datee,point,catt,conducteur1,etat.getValue());
         //if(a==true)
         
         CheckService s1=new CheckService();
@@ -162,14 +172,14 @@ public class UpdateTrajetController implements Initializable {
        date.setValue(datee);
        point_dép.setText(point);
        conducteur.setValue(C);
-       vehicule.setValue(V);
+       vehicule.setValue(V.getMatricule());
        id.setText(idi);
        etat.setValue(en);
     }
 
     @FXML
     private void retour(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("listee.fxml"));
                       Parent root=loader.load();
                      Parent parent = loader.getRoot();
                             

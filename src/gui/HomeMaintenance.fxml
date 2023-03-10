@@ -10,26 +10,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.HomeMaintenanceController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeMaintenanceController">
     <stylesheets>
         <URL value="@homemaintenance.css" />
     </stylesheets>
     <children>
-      <DatePicker fx:id="date" layoutX="159.0" layoutY="77.0" promptText="jj/mm/aaaa" />
-      <Label layoutX="81.0" layoutY="82.0" text="Date" textFill="#3301f8" textOverrun="WORD_ELLIPSIS" />
-      <Label layoutX="81.0" layoutY="152.0" text="Type" textFill="#3301f8" />
-      <ComboBox fx:id="type" layoutX="159.0" layoutY="147.0" prefHeight="25.0" prefWidth="174.0" />
-      <Button fx:id="ajouter" layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" textFill="#3301f8" />
-      <Button fx:id="afficher" layoutX="300.0" layoutY="261.0" mnemonicParsing="false" onAction="#afficher" text="Afficher" textFill="#3301f8" />
-      <VBox layoutX="-27.0" prefHeight="403.0" prefWidth="86.0" style="-fx-background-color: #A9A9A9;" />
-      <Label layoutX="245.0" layoutY="32.0" prefHeight="17.0" prefWidth="128.0" text="Maintenance" textAlignment="CENTER" textFill="#3301f8" textOverrun="WORD_ELLIPSIS">
+      <DatePicker fx:id="date" layoutX="400.0" layoutY="165.0" promptText="jj/mm/aaaa" />
+      <Label layoutX="287.0" layoutY="163.0" text="Date" textFill="#3301f8" textOverrun="WORD_ELLIPSIS">
          <font>
-            <Font name="System Italic" size="20.0" />
+            <Font size="24.0" />
+         </font></Label>
+      <Label layoutX="287.0" layoutY="233.0" text="Type" textFill="#3301f8">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <ComboBox fx:id="type" layoutX="398.0" layoutY="235.0" prefHeight="25.0" prefWidth="174.0" />
+      <Button fx:id="ajouter" layoutX="406.0" layoutY="443.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="44.0" prefWidth="127.0" text="Ajouter" textFill="#3301f8" />
+      <Button fx:id="afficher" layoutX="617.0" layoutY="443.0" mnemonicParsing="false" onAction="#afficher" prefHeight="44.0" prefWidth="118.0" text="Afficher" textFill="#3301f8" />
+      <VBox layoutX="-27.0" prefHeight="650.0" prefWidth="86.0" style="-fx-background-color: #A9A9A9;" />
+      <Label layoutX="384.0" layoutY="14.0" prefHeight="53.0" prefWidth="232.0" text="Maintenance" textAlignment="CENTER" textFill="#3301f8" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="System Italic" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="acceuil" layoutX="67.0" layoutY="261.0" mnemonicParsing="false" onAction="#acceuilbu" text="Accueil" textFill="#3301f8" />
-      <ComboBox fx:id="vehicule" layoutX="159.0" layoutY="213.0" prefWidth="150.0" />
-      <Label layoutX="80.0" layoutY="207.0" text="Vehicule" />
+      <Button fx:id="acceuil" layoutX="198.0" layoutY="443.0" mnemonicParsing="false" onAction="#acceuilbu" prefHeight="44.0" prefWidth="106.0" text="Accueil" textFill="#3301f8" />
+      <ComboBox fx:id="vehicule" layoutX="400.0" layoutY="290.0" prefHeight="31.0" prefWidth="174.0" />
+      <Label layoutX="286.0" layoutY="288.0" text="Vehicule" textFill="#3301f8">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
    </children>
    <styleClass>
       <String fx:value="Predictive" />

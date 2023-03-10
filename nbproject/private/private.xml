@@ -3,9 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ThinkPad/OneDrive/Documents/NetBeansProjects/QuickShip/src/Services/TrajetService.java</file>
-            <file>file:/C:/Users/ThinkPad/OneDrive/Documents/NetBeansProjects/QuickShip/src/gui/homeFXML.fxml</file>
-            <file>file:/C:/Users/ThinkPad/OneDrive/Documents/NetBeansProjects/QuickShip/src/Services/CheckService.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/FrontTechnicienFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/AjouterCommandeFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/DetailsCommandeClientFXML.fxml</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/FrontFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/AcceuilAdminFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/AfficherCommandeClient.fxml</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/AfficherRapportController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/ConnecterController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/HomeRemorqueFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/Checkpoint_listController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/AfficherCommandeClientController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/ModifierRapoortController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/ModifierRapportFrontController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/AffichageMaintenanceController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/DetailsCommandeClientFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/TechnicienAffichageController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/ListeeController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/DetailsCommandeAdminFXMLController.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/Test/NewFXMain.java</file>
+            <file>file:/C:/Users/USER/Downloads/QuickShip/src/gui/HomeFXMLController.java</file>
         </group>
     </open-files>
 </project-private>

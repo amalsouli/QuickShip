@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AcceuilAdminFXMLController">
+   <children>
+      <VBox prefHeight="650.0" prefWidth="264.0" style="-fx-background-color: #001D6E;">
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0">
+               <children>
+                  <Button fx:id="afficherT" layoutX="52.0" layoutY="88.0" mnemonicParsing="false" onAction="#afficherT" prefHeight="31.0" prefWidth="160.0" text="Mes trajets" />
+                  <Button fx:id="afficherC" layoutX="52.0" layoutY="177.0" mnemonicParsing="false" onAction="#afficherC" prefHeight="31.0" prefWidth="160.0" text="Mes commandes" />
+                  <Button fx:id="afficherCP" layoutX="52.0" layoutY="266.0" mnemonicParsing="false" onAction="#afficherCP" prefHeight="31.0" prefWidth="160.0" text="Mes checkpoints" />
+                  <Button fx:id="afficherCat" layoutX="52.0" layoutY="353.0" mnemonicParsing="false" onAction="#afficherCat" prefHeight="31.0" prefWidth="160.0" text="Mes catégories" />
+                  <Button fx:id="afficherV" layoutX="52.0" layoutY="435.0" mnemonicParsing="false" onAction="#afficherV" prefHeight="31.0" prefWidth="160.0" text="Mes véhicules" />
+                  <Button fx:id="afficherM" layoutX="52.0" layoutY="582.0" mnemonicParsing="false" onAction="#afficherM" prefHeight="31.0" prefWidth="160.0" text="Mes maintenances" />
+                  <Button fx:id="afficherR" layoutX="52.0" layoutY="512.0" mnemonicParsing="false" onAction="#afficherR" prefHeight="31.0" prefWidth="160.0" text="Mes remorques" />
+                  <Button fx:id="afficherUser" layoutX="52.0" layoutY="28.0" mnemonicParsing="false" onAction="#afficherUser" prefHeight="31.0" prefWidth="160.0" text="Mes utilisateurs" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <ImageView fitHeight="580.0" fitWidth="795.0" layoutX="264.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@acceuilInt.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

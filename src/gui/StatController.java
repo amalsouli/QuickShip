@@ -80,7 +80,7 @@ public class StatController implements Initializable {
     @FXML
     private void retourtoafM(ActionEvent event) {
                 try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/HomeMaintenance.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/TechnicienAffichage.fxml"));
             Parent root = loader.load();
             retour.getScene().setRoot(root);
            } catch (IOException ex) {

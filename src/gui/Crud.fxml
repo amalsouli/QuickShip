@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CrudController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="673.0" prefWidth="1013.0">
+         <children>
+            <SplitPane dividerPositions="0.7705242334322453" layoutX="384.0" layoutY="189.0" prefHeight="673.0" prefWidth="1013.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="673.0" prefWidth="739.0" style="-fx-background-color: #E5E1D5;">
+                     <children>
+                        <TextField fx:id="id_nom_delete" layoutX="181.0" layoutY="85.0" prefHeight="26.0" prefWidth="169.0" promptText="Nom" />
+                        <Text layoutX="140.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez votre nom et prenom afin de supprimer le compte :" wrappingWidth="386.274995803833">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="id_prenom_delete" layoutX="400.0" layoutY="85.0" prefHeight="26.0" prefWidth="169.0" promptText="Prenom" />
+                        <Button fx:id="fx_back_home_crud" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="0.0" />
+                        
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="673.0" prefWidth="257.0" style="-fx-background-color: #F4EDDE;">
+                     <children>
+                        <Button fx:id="btn_modif" layoutX="43.0" layoutY="286.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="64.0" />
+                        <Button fx:id="id_supprimer" layoutX="43.0" layoutY="148.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="62.0" prefWidth="64.0" />
+                        <Button fx:id="btn_go_home" layoutX="43.0" layoutY="431.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="64.0" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

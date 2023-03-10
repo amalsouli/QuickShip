@@ -140,9 +140,17 @@ public class FrontFXMLController implements Initializable {
                 vehi.setStatut("EN PANNE");
                 vehiculeSer.modifier(vehi);
                 
-                //refresh ne marche pas
-               List<Vehicule> NewList = vehiculeSer.afficher();
-                ListVehicule.setAll(NewList);
+               
+               try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontFXML.fxml"));
+                    Parent root = loader.load();
+                    cardContainer.getScene().setRoot(root);
+                   
+                  
+                } catch (IOException ex) {
+                    System.out.print(ex.getMessage());
+                }
+
               
 
             });

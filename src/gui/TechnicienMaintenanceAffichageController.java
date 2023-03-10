@@ -89,9 +89,9 @@ public class TechnicienMaintenanceAffichageController implements Initializable {
             
             button_mod.setOnAction((event) -> {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierMaintenanceFront.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierMaintenance.fxml"));
                     Parent root = loader.load();
-                    gui.ModifierMaintenanceFrontController modifiier = loader.getController();
+                    ModifierMaintenanceController modifiier = loader.getController();
                     modifiier.setmaintenace(com);
                     Scene scene = button_mod.getScene();
                     scene.setRoot(root);

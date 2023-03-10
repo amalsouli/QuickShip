@@ -10,22 +10,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateCheckController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UpdateCheckController">
     <stylesheets>
         <URL value="@updatecheck.css" />
     </stylesheets>
     <children>
-      <TextField fx:id="destination" layoutX="422.0" layoutY="150.0" />
-      <TextField fx:id="heure" layoutX="422.0" layoutY="202.0" />
-      <TextField fx:id="minute" layoutX="422.0" layoutY="250.0" />
-      <Label layoutX="273.0" layoutY="155.0" prefHeight="21.0" prefWidth="88.0" text="Destination" />
-      <Label layoutX="273.0" layoutY="207.0" prefHeight="21.0" prefWidth="88.0" text="Heure" />
-      <Label layoutX="273.0" layoutY="255.0" prefHeight="21.0" prefWidth="88.0" text="Minute" />
-      <ComboBox fx:id="date" layoutX="422.0" layoutY="311.0" prefWidth="150.0" />
-      <Label layoutX="273.0" layoutY="316.0" prefHeight="21.0" prefWidth="88.0" text="Date Trajet" />
-      <Button fx:id="modifier" layoutX="422.0" layoutY="392.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
-      <TextField fx:id="id" layoutX="422.0" layoutY="98.0" />
-      <Label layoutX="273.0" layoutY="103.0" text="Id " />
+      <TextField fx:id="destination" layoutX="422.0" layoutY="195.0" />
+      <TextField fx:id="heure" layoutX="422.0" layoutY="247.0" />
+      <TextField fx:id="minute" layoutX="422.0" layoutY="295.0" />
+      <Label layoutX="282.0" layoutY="202.0" prefHeight="21.0" prefWidth="88.0" text="Destination" />
+      <Label layoutX="282.0" layoutY="254.0" prefHeight="21.0" prefWidth="88.0" text="Heure" />
+      <Label layoutX="282.0" layoutY="302.0" prefHeight="21.0" prefWidth="88.0" text="Minute" />
+      <ComboBox fx:id="date" layoutX="422.0" layoutY="356.0" prefHeight="31.0" prefWidth="179.0" />
+      <Label layoutX="282.0" layoutY="363.0" prefHeight="21.0" prefWidth="88.0" text="Date Trajet" />
+      <Button fx:id="modifier" layoutX="422.0" layoutY="486.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <TextField fx:id="id" layoutX="422.0" layoutY="143.0" />
+      <Label layoutX="282.0" layoutY="150.0" text="Id " />
       <ImageView fitHeight="38.0" fitWidth="77.0" layoutX="825.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/log.png" />

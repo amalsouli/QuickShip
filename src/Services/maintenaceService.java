@@ -43,16 +43,16 @@ public class maintenaceService {
     }
 
     public void modifier(maintenace t) throws SQLException {
-        String req = "UPDATE `maintenace` SET `utilisateur_id`='" + t.getUtilisateur().getId() + "',`type`='" + t.getType() + "',`date`='" + t.getDate() +"',`type`='"+ "' WHERE id = '" + t.getId() + "'";
+        String req = "UPDATE `maintenace` SET `utilisateur_id`='" + t.getUtilisateur().getId() + "',`type`='" + t.getType() + "',`date`='" + t.getDate() + "' WHERE id = '" + t.getId() + "'";
         PreparedStatement ms = cnx.prepareStatement(req);
         ms.executeUpdate();
     }
 
     public List<maintenace> recuperer() throws SQLException {
         List<maintenace> maintenace = new ArrayList<>();
-        String s = " SELECT maintenace.id,maintenace.utilisateur_id,maintenace.type,maintenace.vehicule_id,maintenace.date,vehicule.matricule,utilisateur.id,utilisateur.nom \"\n" +
-"                + \"FROM maintenace join vehicule on maintenace.vehicule_id=vehicule.id \"\n" +
-"                + \"JOIN utilisateur on utilisateur.id=maintenace.utilisateur_id where trajets.etat=1; ";
+        String s =  " SELECT maintenace.id,maintenace.utilisateur_id,maintenace.type,maintenace.vehicule_id,maintenace.date,vehicule.matricule,utilisateur.id,utilisateur.nom " 
+                  + "FROM maintenace join vehicule on maintenace.vehicule_id=vehicule.id " +
+                    "JOIN utilisateur on utilisateur.id=maintenace.utilisateur_id where maintenace.etat=0; ";
         Statement st = cnx.createStatement();
         ResultSet ms = st.executeQuery(s);
         while (ms.next()) {
@@ -64,14 +64,17 @@ public class maintenaceService {
             M.setType(tv);
             Vehicule V =new Vehicule();
             Utilisateur u=new Utilisateur();
-            int id_user=ms.getInt("id_utilisateur");
+            int id_user=ms.getInt("utilisateur_id");
             String nom=ms.getString("nom");
-            int id_vehic=ms.getInt("id_vehicule");
+            int id_vehic=ms.getInt("vehicule_id");
             String matr=ms.getString("matricule");
+            
             V.setId(id_vehic);
             V.setMatricule(matr);
             u.setId(id_user);
             u.setNom(nom);
+            M.setVehicule(V);
+            M.setUtilisateur(u);
             System.out.println(ms.getType());
            
             maintenace.add(M);
@@ -80,7 +83,7 @@ public class maintenaceService {
     }
 
     public boolean supprimer(maintenace t) throws SQLException {
-        String sql = "UPDATE maintenace SET `etat`=0  WHERE id = " + t.getId() + ";";
+        String sql = "UPDATE maintenace SET `etat`=1  WHERE id = " + t.getId() + ";";
         PreparedStatement ms = cnx.prepareStatement(sql);
         ms.executeUpdate();
         return true;

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeRapportController">
+    <stylesheets>
+        <URL value="@homerapport.css" />
+    </stylesheets>
+    
+      <children>
+      <Label fx:id="description_r" layoutX="308.0" layoutY="151.0" prefHeight="35.0" prefWidth="137.0" text="Description">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label layoutX="57.0" layoutY="91.0" />
+      <Label fx:id="piece_r" layoutX="308.0" layoutY="276.0" prefHeight="35.0" prefWidth="80.0" text="Piéce">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="cout_r" layoutX="308.0" layoutY="322.0" prefHeight="35.0" prefWidth="80.0" text="Cout">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="ob_r" layoutX="304.0" layoutY="386.0" prefHeight="35.0" prefWidth="145.0" text="Observation">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+ 
+      <Label fx:id="duree_r" layoutX="308.0" layoutY="218.0" prefHeight="17.0" prefWidth="80.0" text="Durée">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Button fx:id="ajouter" layoutX="450.0" layoutY="493.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="41.0" prefWidth="101.0" text="Ajouter" />
+      <Button fx:id="afficher" layoutX="656.0" layoutY="493.0" mnemonicParsing="false" onAction="#afficher" prefHeight="41.0" prefWidth="92.0" text="Afficher" />
+      <TextField fx:id="duree" layoutX="467.0" layoutY="220.0" />
+      <TextField fx:id="piece" layoutX="467.0" layoutY="268.0" />
+      <TextField fx:id="cout" layoutX="467.0" layoutY="324.0" />
+      <VBox layoutX="-10.0" layoutY="-14.0" prefHeight="666.0" prefWidth="117.0" style="-fx-background-color: #A9A9A9;" />
+      <Label fx:id="description_r1" layoutX="428.0" layoutY="14.0" prefHeight="53.0" prefWidth="145.0" text="Rapport">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+      <Button fx:id="acceuil" layoutX="249.0" layoutY="493.0" mnemonicParsing="false" onAction="#Accueilbu" prefHeight="41.0" prefWidth="92.0" text="Retour" />
+      <TextArea fx:id="description" layoutX="463.0" layoutY="145.0" prefHeight="47.0" prefWidth="187.0" />
+      <TextArea fx:id="observation" layoutX="467.0" layoutY="386.0" prefHeight="48.0" prefWidth="187.0" />
+   </children>
+</AnchorPane>

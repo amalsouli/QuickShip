@@ -82,6 +82,10 @@ public class AfficherVehiculeFXMLController implements Initializable {
     private TableColumn<Vehicule, String> statut;
 
     private final SimpleStringProperty filtre = new SimpleStringProperty("");
+    @FXML
+    private Button pieChart;
+    @FXML
+    private Button barChart;
 
     /**
      * Initializes the controller class.
@@ -128,7 +132,7 @@ public class AfficherVehiculeFXMLController implements Initializable {
     @FXML
     private void retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/HomeVehiculeFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAdminFXML.fxml"));
             Parent root = loader.load();
             retour.getScene().setRoot(root);
         } catch (IOException ex) {
@@ -169,7 +173,7 @@ public class AfficherVehiculeFXMLController implements Initializable {
                         Button b = new Button("Modifier");
                         b.setOnAction((event) -> {
                             try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ModifierVehiculeFXML.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierVehiculeFXML.fxml"));
                                 Parent root = loader.load();
                                 ModifierVehiculeFXMLController modifiier = loader.getController();
                                 Vehicule v = table.getItems().get(getIndex());
@@ -199,6 +203,30 @@ public class AfficherVehiculeFXMLController implements Initializable {
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAjoutVehicule.fxml"));
+            Parent root = loader.load();
+            AjouterV.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.print(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void pieChart(ActionEvent event) {
+         try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PieChartFXML.fxml"));
+            Parent root = loader.load();
+            AjouterV.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.print(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void barChart(ActionEvent event) {
+         try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BarChartFXML.fxml"));
             Parent root = loader.load();
             AjouterV.getScene().setRoot(root);
         } catch (IOException ex) {

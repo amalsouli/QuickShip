@@ -30,13 +30,13 @@ public class maintenace {
         this.vehicule=v;
     }
 
-    public maintenace(int id, TYPE type, Utilisateur utilisateur, Date date,Vehicule v){
+    public maintenace(int id, TYPE type, Utilisateur utilisateur, Date date){
         this.id = id;
         this.TYPE = type;
         this.utilisateur = utilisateur;
           
            this.date = date;
-           this.vehicule=v;
+          
     }
 
     public TYPE getType() {
@@ -77,8 +77,10 @@ public class maintenace {
 
     @Override
     public String toString() {
-        return "maintenace{" + "id=" + id + ", type=" + TYPE + ", utilisateur=" + utilisateur + ", date=" + date + '}';
+        return "maintenace{" + "id=" + id + ", TYPE=" + TYPE + ", utilisateur=" + utilisateur + ", date=" + date + ", vehicule=" + vehicule + '}';
     }
+
+    
 
     public Vehicule getVehicule() {
         return vehicule;

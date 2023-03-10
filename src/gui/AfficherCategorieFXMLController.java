@@ -173,7 +173,7 @@ public class AfficherCategorieFXMLController implements Initializable {
       @FXML
     private void acceuil(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAdminFXML.fxml"));
             Parent root = loader.load();
             Scene scene = acceuil.getScene();
             scene.setRoot(root);

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" stylesheets="@src/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreerCompteController">
+   <children>
+      <SplitPane dividerPositions="0.380811078140455" layoutX="211.0" layoutY="79.0" prefHeight="673.0" prefWidth="1013.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="189.0" fitWidth="376.0" layoutY="-21.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@quick.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="126.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue !">
+                     <font>
+                        <Font name="Times New Roman" size="37.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pour rester en contact avec nous, vous devez créer un compte." textAlignment="CENTER" wrappingWidth="273.8731689455625">
+                     <font>
+                        <Font name="Times New Roman" size="21.0" />
+                     </font></Text>
+                  <Button fx:id="btn_connecter_old" layoutX="126.0" layoutY="376.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="130.0" styleClass="button-creer-compte" stylesheets="@../Resources/Style.css" text="Se Connecter" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #F4EDDE;">
+               <children>
+                  <TextField fx:id="id_nom" layoutX="43.0" layoutY="289.0" promptText="Nom" />
+                  <TextField fx:id="id_mdp" layoutX="320.0" layoutY="439.0" promptText="Mot De Passe" />
+                  <TextField fx:id="id_telephone" layoutX="320.0" layoutY="365.0" prefHeight="26.0" prefWidth="150.0" promptText="Téléphone" />
+                  <TextField fx:id="id_prenom" layoutX="43.0" layoutY="364.0" promptText="Prénom" />
+                  <TextField fx:id="id_adresse" layoutX="319.0" layoutY="287.0" promptText="Adresse" />
+                  <ComboBox fx:id="id_role" layoutX="36.0" layoutY="212.0" prefWidth="150.0" promptText="Role" visibleRowCount="3" />
+                  <Text fill="#7700ff" layoutX="95.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer Votre Compte">
+                     <font>
+                        <Font name="Times New Roman" size="46.0" />
+                     </font>
+                  </Text>
+                  <Separator layoutX="250.0" layoutY="212.0" orientation="VERTICAL" prefHeight="280.0" prefWidth="14.0" />
+                  <Button id="btn-profile" fx:id="btn_valider" layoutX="203.0" layoutY="559.0" mnemonicParsing="false" onAction="#valider" prefHeight="20.0" prefWidth="141.0" stylesheets="@../Resources/Style.css" text="Valider" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-creer-compte" />
+                        <String fx:value="trans-btn-white-border" />
+                        <String fx:value="trans-btn-white-border" />
+                     </styleClass></Button>
+                  <ComboBox fx:id="id_genre" layoutX="320.0" layoutY="212.0" prefWidth="150.0" promptText="Genre " />
+                  <ComboBox fx:id="id_age" layoutX="42.0" layoutY="439.0" prefHeight="26.0" prefWidth="167.0" promptText="Date naissance" visibleRowCount="3" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

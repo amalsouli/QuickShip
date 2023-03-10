@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -82,15 +83,17 @@ public class ListeeController implements Initializable {
     @FXML
     private TextField rech;
     @FXML
-    private Button rechercher;
-    @FXML
     private DatePicker daterech;
     @FXML
     private TableColumn<Trajet, String> etat;
+        private final SimpleStringProperty filtre = new SimpleStringProperty("");
+    @FXML
+    private Button refresh;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            List l=s.afficher();
+            List<Trajet> l=s.afficher();
             StudentList.addAll(l);
         
         date.setCellValueFactory(new PropertyValueFactory<>("Date"));
@@ -105,6 +108,18 @@ public class ListeeController implements Initializable {
         trajettable.setItems(StudentList);
         this.delete();
         this.modifier();
+        rech.textProperty().addListener((observable, oldValue, newValue) -> {
+                filtre.set(newValue);
+            });
+            Predicate<Trajet> filtrePersonnes = tra
+                    -> filtre.get().isEmpty()
+                            || tra.getPoint_dep().toLowerCase().contains(filtre.get().toLowerCase())
+                    ||tra.getConducteur().getNom().toLowerCase().contains(filtre.get().toLowerCase())
+                    ||tra.getVehicule().getMarque().toLowerCase().contains(filtre.get().toLowerCase());
+            StudentList.setAll(l.stream().filter(filtrePersonnes).collect(Collectors.toList()));
+            filtre.addListener((observable, oldValue, newValue) -> {
+                StudentList.setAll(l.stream().filter(filtrePersonnes).collect(Collectors.toList()));
+            });
         } catch (SQLException ex) {
             Logger.getLogger(ListeeController.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -197,7 +212,7 @@ public class ListeeController implements Initializable {
 
     @FXML
     private void acceuil(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAdminFXML.fxml"));
         
                         Parent root=loader.load();
                         Parent parent = loader.getRoot();
@@ -205,15 +220,17 @@ public class ListeeController implements Initializable {
                           scene.setRoot(parent);
     }
 
+   
+
     @FXML
-    private void recherche(ActionEvent event) throws SQLException {
-        
-        java.sql.Date datee = java.sql.Date.valueOf(daterech.getValue());
-        
+    private void filter(ActionEvent event) {
+        try {
+            java.sql.Date datee = java.sql.Date.valueOf(daterech.getValue());
+            
             List<Trajet> l=s.afficher();
             List<Trajet> l1=l.stream()
-                     .filter(p->p.getDate().equals(datee))
-                     .collect(Collectors.toList());
+                    .filter(p->p.getDate().equals(datee))
+                    .collect(Collectors.toList());
             if(l1.isEmpty())
             {
                 
@@ -226,16 +243,39 @@ public class ListeeController implements Initializable {
             {
                 date.setCellValueFactory(new PropertyValueFactory<>("Date"));
                 point.setCellValueFactory(new PropertyValueFactory<>("Point_dep"));
-              vehicule.setCellValueFactory(new PropertyValueFactory<>("Vehicule"));
-        conducteur.setCellValueFactory(new PropertyValueFactory<>("Conducteur"));
-        trajettable.setItems(StudentList1);
-        this.delete();
-        this.modifier(); 
-        StudentList1.addAll(l1);
-           
+ vehicule.setCellValueFactory(cellData -> {
+                Vehicule check = cellData.getValue().getVehicule();
+                return new SimpleStringProperty(check.getMarque());
+            });                conducteur.setCellValueFactory(new PropertyValueFactory<>("Conducteur"));
+                trajettable.setItems(StudentList1);
+                this.delete();
+                this.modifier();
+                StudentList1.addAll(l1);
+                
             }
-           
-        
+        } catch (SQLException ex) {
+            Logger.getLogger(ListeeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void refresh(ActionEvent event) {
+        try {
+            daterech.setValue(null);
+            List<Trajet> l=s.afficher();
+            date.setCellValueFactory(new PropertyValueFactory<>("Date"));
+            point.setCellValueFactory(new PropertyValueFactory<>("Point_dep"));
+ vehicule.setCellValueFactory(cellData -> {
+                Vehicule check = cellData.getValue().getVehicule();
+                return new SimpleStringProperty(check.getMarque());
+            });            conducteur.setCellValueFactory(new PropertyValueFactory<>("Conducteur"));
+            trajettable.setItems(StudentList1);
+            this.delete();
+            this.modifier();
+            StudentList1.addAll(l);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListeeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

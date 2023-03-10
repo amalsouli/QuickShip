@@ -168,13 +168,14 @@ public class AjoutCheckController implements Initializable {
                     s.ajouter(c);
                       System.out.println("Ajout avec succés");
                       //System.out.println(c);
-                      FXMLLoader loader = new FXMLLoader(getClass().getResource("Checkpoint_list.fxml"));
+                     /* FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCommandeFXML.fxml"));
                       Parent root=loader.load();
                       Parent parent = loader.getRoot();
                             
                       Scene scene = ajouter.getScene();
-                      scene.setRoot(parent);
-                    
+                      scene.setRoot(parent);*/
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Ajout avec succés" );
+                alert.showAndWait();
                      
                  
                  

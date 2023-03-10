@@ -106,7 +106,8 @@ public class ModifierVehiculeFXMLController implements Initializable {
         observableStatut.add("NON DISPONIBLE");
         observableStatut.add("EN PANNE");
         statut.setItems(observableStatut);
-
+  tun.setText("TUN");
+            tun.setEditable(false);
     }
 
     public void SetVehicule(Vehicule v) {
@@ -154,28 +155,28 @@ public class ModifierVehiculeFXMLController implements Initializable {
             String marqueV = marque.getValue();
             String couleurV = couleur.getText();
             String matriculeV = premiersChiffres.getText() + tun.getText() + derniersChiffres.getText();
-          /*  String premiersChiffresV = premiersChiffres.getText();
+            /*  String premiersChiffresV = premiersChiffres.getText();
             String tunV = tun.getText();
             String derniersChiffresV = derniersChiffres.getText();
             //String matriculeV = premiersChiffresV + tunV + derniersChiffresV;*/
             String statutV = statut.getValue();
             Remorque remorqueV = longueurT.getValue();
-
+          
             //CONTROLE DE SAISI
             boolean a = true;
             String regex1 = "\\d{3}";
             String regex2 = "TUN";
             String regex3 = "\\d{4}";
-         for (Vehicule v : vehicules) {
+            /*for (Vehicule v : vehicules) {
 
-            if (v.getMatricule().equals(matriculeV)) {
+           if (v.getMatricule().equals(matriculeV)) {
                 a = false;
                 Alert alert = new Alert(Alert.AlertType.ERROR, " Matricule existe déja ");
                 alert.showAndWait();
                
             }
 
-        }
+        }*/
             if (!premiersChiffres.getText().matches(regex1)) {
                 a = false;
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Entrée invalide Le 1er champ de la matricule doit contenir 3 chiffres ");
@@ -295,7 +296,7 @@ public class ModifierVehiculeFXMLController implements Initializable {
 
     @FXML
     private void check_remorque(ActionEvent event) {
-        
+
         TYPE_VEHICULE typeV = type.getValue();
         if (typeV == TYPE_VEHICULE.semi_remorque) {
             lonueurL.setVisible(true);

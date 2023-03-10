@@ -71,7 +71,6 @@ public class HomeVehiculeFXMLController implements Initializable {
     @FXML
     private ComboBox<Remorque> longueurT;
     //private TextField matricule;
-    @FXML
     private Button retourA;
     @FXML
     private ComboBox<String> marque;
@@ -267,16 +266,7 @@ public class HomeVehiculeFXMLController implements Initializable {
 
     }
 
-    @FXML
-    private void retourA(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccueilFXML.fxml"));
-            Parent root = loader.load();
-            retourA.getScene().setRoot(root);
-        } catch (IOException ex) {
-            System.out.print(ex.getMessage());
-        }
-    }
+   
 
     @FXML
     private void retour(ActionEvent event) {

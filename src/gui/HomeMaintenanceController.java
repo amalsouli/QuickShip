@@ -119,7 +119,7 @@ public class HomeMaintenanceController implements Initializable {
         private void afficher(ActionEvent event) throws IOException {
         
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Affichage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AffichageMaintenance.fxml"));
             Parent root = loader.load();
             afficher.getScene().setRoot(root);
            } catch (IOException ex) {

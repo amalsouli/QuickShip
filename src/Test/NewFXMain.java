@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package Test;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -26,11 +26,15 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) throws IOException {
         
             
-            Parent root = FXMLLoader.load(getClass().getResource("listee.fxml"));
+           // Parent root = FXMLLoader.load(getClass().getResource("../gui/connecter.fxml"));
+                       Parent root = FXMLLoader.load(getClass().getResource("../gui/CreateAccount.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("../gui/AcceuilAdminFXML.fxml"));
+
             Scene scene = new Scene(root);
             primaryStage.setTitle("QuickShip");
-            primaryStage.setHeight(500);
-            primaryStage.setWidth(900);
+            primaryStage.setHeight(650);
+            primaryStage.setWidth(1000);
+            primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();
             

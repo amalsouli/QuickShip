@@ -17,8 +17,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -64,17 +66,15 @@ public class Checkpoint_listController implements Initializable {
     private TableColumn<CheckPoint, Button> supprimer;
     @FXML
     private TableColumn<CheckPoint, Button> modifer;
-    @FXML
     private Button retour;
     @FXML
     private Text text1;
     @FXML
     private Button btn3;
     @FXML
-    private TextField rech;
-    @FXML
-    private Button rechercher;
-    
+    private TextField rechercher;
+            private final SimpleStringProperty filtre = new SimpleStringProperty("");
+
     /**
      * Initializes the controller class.
      * @param url
@@ -83,13 +83,10 @@ public class Checkpoint_listController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        List l;
         try {
-            l = s.afficher();
+           List<CheckPoint>  l = s.afficher();
             StudentList.addAll(l);
-        } catch (SQLException ex) {
-            Logger.getLogger(Checkpoint_listController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
             
         id.setCellValueFactory(new PropertyValueFactory<>("Id"));
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -98,9 +95,21 @@ public class Checkpoint_listController implements Initializable {
         minutes.setCellValueFactory(new PropertyValueFactory<>("min"));
         this.delete();
         this.modifier();
-    
+     rechercher.textProperty().addListener((observable, oldValue, newValue) -> {
+                filtre.set(newValue);
+            });
+            Predicate<CheckPoint> filtrePersonnes = tra
+                    -> filtre.get().isEmpty()
+                            || tra.getAdresse().toLowerCase().contains(filtre.get().toLowerCase());
+            StudentList.setAll(l.stream().filter(filtrePersonnes).collect(Collectors.toList()));
+            filtre.addListener((observable, oldValue, newValue) -> {
+                StudentList.setAll(l.stream().filter(filtrePersonnes).collect(Collectors.toList()));
+            });
 
         table.setItems(StudentList);
+         } catch (SQLException ex) {
+            Logger.getLogger(Checkpoint_listController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
      private void delete() {
         supprimer.setCellFactory((param) -> {
@@ -122,9 +131,7 @@ public class Checkpoint_listController implements Initializable {
                             } catch (SQLException ex) {
                                 Logger.getLogger(ListeeController.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            
-
-                        });
+                                                    });
                         setGraphic(b);
 
                     }
@@ -161,8 +168,9 @@ public class Checkpoint_listController implements Initializable {
         int id=C.getId();
         String myString = Integer.toString(id);
         
-        //modifiier.setCheck(destination,heure,minute,t.getDate().toString(),id);
-         modifiier.setCheck1(destination,id);
+      //  modifiier.setCheck(destination,heure,minute,t.getDate().toString(),id);
+         //modifiier.setCheck1(destination,id);
+         modifiier.setCheck1(C);
                            Parent parent = loader.getRoot();
                             
                           Scene scene = b.getScene();
@@ -179,19 +187,11 @@ public class Checkpoint_listController implements Initializable {
         });
     }
 
-    @FXML
-    private void retour(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("Ajoutcheck.fxml"));
-        
-                        Parent root=loader.load();
-                        Parent parent = loader.getRoot();
-                          Scene scene = retour.getScene();
-                          scene.setRoot(parent);
-    }
+  
 
     @FXML
     private void acceuil(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAdminFXML.fxml"));
         
                         Parent root=loader.load();
                         Parent parent = loader.getRoot();
@@ -199,10 +199,6 @@ public class Checkpoint_listController implements Initializable {
                           scene.setRoot(parent);
     }
 
-    @FXML
-    private void rechercher(ActionEvent event) {
-        
-    }
     }    
     
 

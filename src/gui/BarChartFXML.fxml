@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import java.net.*?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -12,10 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BarChartFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.BarChartFXMLController">
     <stylesheets>
-        <URL value="@barchartfxml.css"/>
+        <URL value="@barchartfxml.css" />
     </stylesheets>
      <children>
       <VBox layoutX="-49.0" prefHeight="660.0" prefWidth="119.0" style="-fx-background-color: #001D6E;">
@@ -32,7 +30,7 @@
          </yAxis>
       </BarChart>
       <VBox fx:id="mainBox" layoutX="62.0" layoutY="102.0" prefHeight="505.0" prefWidth="894.0" />
-      <Button fx:id="retourA" defaultButton="true" layoutX="33.0" layoutY="26.0" mnemonicParsing="false" onAction="#retourA" prefHeight="39.0" prefWidth="89.0" text="Accueil" textFill="#3407fc">
+      <Button fx:id="retourA" defaultButton="true" layoutX="33.0" layoutY="26.0" mnemonicParsing="false" onAction="#retourA" prefHeight="39.0" prefWidth="89.0" text="Retour" textFill="#3407fc">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

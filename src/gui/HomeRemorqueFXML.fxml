@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import java.net.*?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -13,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeRemorqueFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeRemorqueFXMLController">
     <stylesheets>
-        <URL value="@homeremorquefxml.css"/>
-    </stylesheets
-   <children>
+        <URL value="@homeremorquefxml.css" />
+    </stylesheets>
+<children>
       <Label layoutX="262.0" layoutY="173.0" prefHeight="31.0" prefWidth="165.0" text="Longueur :" textFill="#210f8a" underline="true">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -66,10 +65,10 @@
       <ComboBox fx:id="couleurR" layoutX="442.0" layoutY="458.0" prefHeight="31.0" prefWidth="187.0" />
       <ImageView fitHeight="123.0" fitWidth="99.0" layoutX="813.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo-pi-final.png" />
+            <Image url="@quick.png" />
          </image>
       </ImageView>
-      <Button fx:id="retourA" cancelButton="true" defaultButton="true" layoutX="30.0" layoutY="34.0" mnemonicParsing="false" onAction="#retourA" prefHeight="39.0" prefWidth="100.0" text="Accueil" textFill="#3407fc">
+      <Button fx:id="retourA" cancelButton="true" defaultButton="true" layoutX="30.0" layoutY="34.0" mnemonicParsing="false" onAction="#retourA" prefHeight="39.0" prefWidth="100.0" text="Retour" textFill="#3407fc">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

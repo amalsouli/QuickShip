@@ -92,13 +92,19 @@ public class UpdateCheckController implements Initializable {
        date.setValue(t);
        id.setText(Integer.toString(idi));
     }
-      public void setCheck1(String destinationn,int idi)
+      public void setCheck1(CheckPoint c)
       {
-           destination.setText(destinationn);
-           id.setText(Integer.toString(idi));
+           destination.setText(c.getAdresse());
+           id.setText(Integer.toString(c.getId()));
+           heure.setText(Integer.toString(c.getHeure()));
+       minute.setText(Integer.toString(c.getMin()));
+      if(c.getTrajet().getDate()!= null){
+       date.setValue(c.getTrajet().getDate().toString());
        
+      }else{
+    date.setValue("");
+}
       }
-
     @FXML
     private void modifier(ActionEvent event) throws SQLException, IOException {
            Trajet x=null;
@@ -132,7 +138,7 @@ public class UpdateCheckController implements Initializable {
 
     @FXML
     private void retour(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("checkpoint_list.fxml"));
                       Parent root=loader.load();
                      Parent parent = loader.getRoot();
                             

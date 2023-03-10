@@ -8,33 +8,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterCategorieFXMLController">
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.AjouterCategorieFXMLController">
     <stylesheets>
-        <URL value="@ajoutercategoriefxml.css"/>
+        <URL value="@ajoutercategoriefxml.css" />
     </stylesheets>
     <children>
-      <Label layoutX="200.0" layoutY="27.0" text="Ajouter Catégorie" textFill="#ff4204">
+      <Label layoutX="380.0" layoutY="32.0" text="Ajouter Catégorie" textFill="#ff4204">
          <font>
             <Font name="Britannic Bold" size="31.0" />
          </font>
       </Label>
-      <Label layoutX="74.0" layoutY="105.0" text="Nom : ">
+      <Label layoutX="188.0" layoutY="174.0" text="Nom : ">
          <font>
-            <Font name="Britannic Bold" size="17.0" />
+            <Font name="Britannic Bold" size="36.0" />
          </font></Label>
-      <Label layoutX="70.0" layoutY="155.0" text="Description :">
+      <Label layoutX="184.0" layoutY="224.0" text="Description :">
          <font>
-            <Font name="Britannic Bold" size="17.0" />
+            <Font name="Britannic Bold" size="36.0" />
          </font></Label>
-      <TextField fx:id="nom" layoutX="180.0" layoutY="102.0" />
-      <TextArea fx:id="description" layoutX="180.0" layoutY="155.0" prefHeight="69.0" prefWidth="280.0" />
-      <Button fx:id="ajouter" layoutX="478.0" layoutY="261.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="36.0" prefWidth="81.0" text="Ajouter" textFill="#f74605">
+      <TextField fx:id="nom" layoutX="422.0" layoutY="177.0" />
+      <TextArea fx:id="description" layoutX="422.0" layoutY="233.0" prefHeight="197.0" prefWidth="424.0" />
+      <Button fx:id="ajouter" layoutX="635.0" layoutY="464.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="36.0" prefWidth="94.0" text="Ajouter" textFill="#f74605">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <VBox layoutX="-40.0" prefHeight="410.0" prefWidth="87.0" style="-fx-background-color: #ff4204;" />
-      <Button fx:id="retour" layoutX="381.0" layoutY="261.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="81.0" text="Retour" textFill="#28211f">
+      <VBox layoutX="-40.0" prefHeight="650.0" prefWidth="87.0" style="-fx-background-color: #ff4204;" />
+      <Button fx:id="retour" layoutX="487.0" layoutY="464.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="94.0" text="Retour" textFill="#28211f">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

@@ -37,6 +37,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import Services.CommandeService;
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 
 /**
  * FXML Controller class
@@ -52,6 +54,8 @@ public class AfficherCommandeClientController implements Initializable {
     private final SimpleStringProperty filtre = new SimpleStringProperty("");
     @FXML
     private TextField search;
+    @FXML
+    private Button retour;
 
     /**
      * Initializes the controller class.
@@ -61,99 +65,113 @@ public class AfficherCommandeClientController implements Initializable {
         List<Commande> list = commSer.afficher();
         ListCommande.addAll(list);
         for (Commande com : ListCommande) {
+            if (com.getUtilisateur().getId() == 1) {
+                // Créer les éléments de la première colonne
+                Label label1V = new Label(com.getDate().toString());
+                label1V.setStyle("-fx-font-size: 14px; -fx-font-weight:  bold;");
+                Label label2v = new Label("     '" + com.getNom_produit() + "'");
+                VBox vbox1 = new VBox();
+                vbox1.getChildren().addAll(label1V, label2v);
+                vbox1.setAlignment(Pos.CENTER_LEFT);
+                vbox1.setPrefWidth(200);
 
-            // Créer les éléments de la première colonne
-            Label label1V = new Label(com.getDate().toString());
-            label1V.setStyle("-fx-font-size: 14px; -fx-font-weight:  bold;");
+                // Créer les éléments de la deuxième colonne
+                File imageFile = new File("C:\\Users\\USER\\Downloads\\QuickShip\\src\\gui\\destination.png"); // chemin absolu vers l'image
+                Image image = new Image(imageFile.toURI().toString());
+                ImageView icon = new ImageView(image);
+                icon.setFitWidth(30);
+                icon.setFitHeight(28);
+                Label label1x = new Label(com.getAdresse_départ());
+                Label label2x = new Label(com.getCheckPoint().getAdresse());
+                HBox depart = new HBox();
+                depart.getChildren().addAll(label1x, icon, label2x);
+                depart.setAlignment(Pos.CENTER_LEFT);
+                depart.setPrefWidth(200);
 
-            Label label2v = new Label("     '" + com.getNom_produit() + "'");
-            VBox vbox1 = new VBox();
-            vbox1.getChildren().addAll(label1V, label2v);
-            // Créer les éléments de la deuxième colonne
-            File imageFile = new File("destination.png"); // chemin absolu vers l'image
-            Image image = new Image(imageFile.toURI().toString());
-            ImageView icon = new ImageView(image);
-            icon.setFitWidth(30);
-            icon.setFitHeight(28);
-            Label label1x = new Label("    " + com.getAdresse_départ());
-            Label label2x = new Label(com.getCheckPoint().getAdresse());
-            HBox depart = new HBox();
-            depart.getChildren().addAll(label1x, icon, label2x);
-            // Créer la troisième colonne
-            Label label3 = new Label(com.getStatus_commande().name());
+                // Créer la troisième colonne
+                Label label3 = new Label(com.getStatus_commande().name());
+                HBox statut = new HBox();
+                statut.getChildren().addAll(label3);
+                statut.setAlignment(Pos.CENTER_LEFT);
+                statut.setPrefWidth(150);
 
-            // Créer les éléments de la quatrième colonne
-            Button button_mod = new Button("Modifier");
-            Tooltip tooltip = new Tooltip("votre commande est " + com.getStatus_commande().name() + "vous ne pouvez pas la modifier");
+                // Créer les éléments de la quatrième colonne
+                Button button_mod = new Button("Modifier");
+                Tooltip tooltip = new Tooltip("votre commande est " + com.getStatus_commande().name() + "vous ne pouvez pas la modifier");
+                if (!com.getStatus_commande().equals(STATUS_COMMANDE.en_attente)) {
 
-            if (!com.getStatus_commande().equals(STATUS_COMMANDE.en_attente)) {
-
-                button_mod.setOnMouseEntered((event) -> {
-                    tooltip.show(button_mod, event.getScreenX(), event.getScreenY() + 20);
-                    button_mod.setDisable(true);
+                    button_mod.setOnMouseEntered((event) -> {
+                        tooltip.show(button_mod, event.getScreenX(), event.getScreenY() + 20);
+                        button_mod.setDisable(true);
+                    });
+                    button_mod.setOnMouseExited((event) -> {
+                        tooltip.hide();
+                        button_mod.setDisable(true);
+                    });
+                }
+                button_mod.setOnAction((event) -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierCommandeFXML.fxml"));
+                        Parent root = loader.load();
+                        ModifierCommandeFXMLController modifiier = loader.getController();
+                        modifiier.setCommande(com);
+                        Scene scene = button_mod.getScene();
+                        scene.setRoot(root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
-                button_mod.setOnMouseExited((event) -> {
-                    tooltip.hide();
-                    button_mod.setDisable(true);
+
+                Button button_det = new Button("Détails");
+                button_det.setOnAction((event) -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailsCommandeClientFXML.fxml"));
+                        Parent root = loader.load();
+                        DetailsCommandeClientFXMLController modifiier = loader.getController();
+                        modifiier.setCommande(com);
+                        Scene scene = button_det.getScene();
+                        scene.setRoot(root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
+                HBox vbox3 = new HBox();
+                vbox3.getChildren().addAll(button_mod, button_det);
+                vbox3.setAlignment(Pos.CENTER_LEFT);
+                vbox3.setPrefWidth(200);
+                //Créer les éléments de la cinquieme colonne
+                Button button_anul = new Button("Annuler");
+                button_anul.setOnAction((event) -> {
+                    com.setStatus_commande(STATUS_COMMANDE.annulée);
+                    commSer.modifier(com);
+                    List<Commande> NewList = commSer.afficher();
+                    ListCommande.setAll(NewList);
+                });
+
+                HBox anul = new HBox();
+                anul.getChildren().addAll(button_anul);
+                anul.setAlignment(Pos.CENTER_LEFT);
+                anul.setPrefWidth(150);
+
+                // Créer la HBox avec toutes les colonnes
+                HBox hbox = new HBox();
+                hbox.getChildren().addAll(vbox1, depart, statut, anul, vbox3);
+                hbox.setStyle("  -fx-background-color: #FFFFFF;\n"
+                        + "    -fx-border-radius: 5px;\n"
+                        + "    -fx-border-color: #D3D3D3;\n"
+                        + "    -fx-border-width: 1px;\n"
+                        + "    -fx-padding: 20px;\n"
+                        + "    -fx-margin: 10px;\n"
+                        + "    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);"
+                        + " display: flex;\n"
+                        + "  -fx-height: 2px;");
+                hbox.setSpacing(20);
+                // Ajouter la HBox à la VBox
+                cardContainer.getChildren().add(hbox);
+                cardContainer.setStyle(" overflow-y: scroll;");
             }
-            button_mod.setOnAction((event) -> {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierCommandeFXML.fxml"));
-                    Parent root = loader.load();
-                    ModifierCommandeFXMLController modifiier = loader.getController();
-                    modifiier.setCommande(com);
-                    Scene scene = button_mod.getScene();
-                    scene.setRoot(root);
-                } catch (IOException ex) {
-                    Logger.getLogger(AfficherCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
 
-            Button button_det = new Button("Détails");
-            button_det.setOnAction((event) -> {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailsCommandeFXML.fxml"));
-                    Parent root = loader.load();
-                    DetailsCommandeFXMLController modifiier = loader.getController();
-                    modifiier.setCommande(com);
-                    Scene scene = button_det.getScene();
-                    scene.setRoot(root);
-                } catch (IOException ex) {
-                    Logger.getLogger(AfficherCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-            HBox vbox3 = new HBox();
-            vbox3.getChildren().addAll(button_mod, button_det);
-            Button button_anul = new Button("Annuler");
-            button_anul.setOnAction((event) -> {
-                com.setStatus_commande(STATUS_COMMANDE.annulée);
-                commSer.modifier(com);
-                List<Commande> NewList = commSer.afficher();
-                ListCommande.setAll(NewList);
-            });
-
-
-            // Créer la HBox avec toutes les colonnes
-            HBox hbox = new HBox();
-
-            hbox.getChildren().addAll(vbox1, depart, label3, button_anul, vbox3);
-            hbox.setStyle("  -fx-background-color: #FFFFFF;\n"
-                    + "    -fx-border-radius: 5px;\n"
-                    + "    -fx-border-color: #D3D3D3;\n"
-                    + "    -fx-border-width: 1px;\n"
-                    + "    -fx-padding: 20px;\n"
-                    + "    -fx-margin: 10px;\n"
-                    + "    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);"
-                    + " display: flex;\n"
-                    + "  -fx-height: 2px;");
-            hbox.setSpacing(20);
-            // Ajouter la HBox à la VBox
-            cardContainer.getChildren().add(hbox);
-            cardContainer.setStyle(" overflow-y: scroll;");
-            // Node node = cardContainer;
-        }
-        /*search.textProperty().addListener((observable, oldValue, newValue) -> {
+            /*search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtre.set(newValue);
         });
         Predicate<Commande> filtrePersonnes = commande
@@ -164,6 +182,18 @@ public class AfficherCommandeClientController implements Initializable {
         filtre.addListener((observable, oldValue, newValue) -> {
 cardContainer.getChildren().setAll(node.stream().filter(filtrePersonnes).collect(Collectors.toList()));
         });*/
+        }
     }
-    
+
+    @FXML
+    private void retour(ActionEvent event) {
+          try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilClientFXML.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = retour.getScene();
+                        scene.setRoot(root);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherCommandeFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+    }
 }

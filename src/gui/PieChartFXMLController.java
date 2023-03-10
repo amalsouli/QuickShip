@@ -64,7 +64,7 @@ public class PieChartFXMLController implements Initializable {
     @FXML
     private void retourA(ActionEvent event) {
            try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AccueilFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherVehiculeFXML.fxml"));
             Parent root = loader.load();
             retourA.getScene().setRoot(root);
         } catch (IOException ex) {

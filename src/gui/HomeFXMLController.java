@@ -162,8 +162,8 @@ public class HomeFXMLController implements Initializable {
             Trajet t =new Trajet(datee,point,catt,conducteur1);
             ts.ajouter(t);
             //SMSUtil.sendSMS("+216"+conducteur1.getTel(),"Vous avez un trajet à faire de "+point +"le "+datee);
-            Send_Mail.sendEmail(conducteur1.getEmail(), "Trajet", "Bonjour,Vous avez un trajet le "+datee+"de "+point);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("Listee.fxml"));
+          //  Send_Mail.sendEmail(conducteur1.getEmail(), "Trajet", "Bonjour,Vous avez un trajet le "+datee+"de "+point);
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("listee.fxml"));
           Parent root=loader.load();
           Parent parent = loader.getRoot();
                             
@@ -176,7 +176,7 @@ public class HomeFXMLController implements Initializable {
 
     @FXML
     private void acceuil(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("acceuil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("listee.fxml"));
                       Parent root=loader.load();
                      Parent parent = loader.getRoot();
                             

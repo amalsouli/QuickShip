@@ -51,6 +51,8 @@ public class TechnicienAffichageController implements Initializable {
     rapportService rSer = new rapportService();
     @FXML
     private Button home;
+    @FXML
+    private Button stat;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -112,7 +114,7 @@ public class TechnicienAffichageController implements Initializable {
                     }
                 });
                 // Créer les éléments de la quatrième colonne
-                Button button_pdf = new Button("PDF");
+              /*  Button button_pdf = new Button("PDF");
                                 button_pdf.setOnAction((event) -> {
 
                  try {
@@ -126,10 +128,10 @@ public class TechnicienAffichageController implements Initializable {
                     }
 
                 
-                });
+                });*/
 
                 HBox vbox4 = new HBox();
-                vbox4.getChildren().addAll(button_pdf);
+               // vbox4.getChildren().addAll(button_pdf);
                 vbox4.setAlignment(Pos.CENTER_LEFT);
                 vbox4.setPrefWidth(200);
 
@@ -140,7 +142,7 @@ public class TechnicienAffichageController implements Initializable {
 
                 // Créer la HBox avec toutes les colonnes
                 HBox hbox = new HBox();
-                hbox.getChildren().addAll(vbox1, observation, duree, coutt, Piece, vbox3, vbox4);
+                hbox.getChildren().addAll(vbox1, observation, duree, coutt, Piece, vbox3);
                 hbox.setStyle("  -fx-background-color: #FFFFFF;\n"
                         + "    -fx-border-radius: 5px;\n"
                         + "    -fx-border-color: #D3D3D3;\n"
@@ -171,11 +173,21 @@ cardContainer.getChildren().setAll(node.stream().filter(filtrePersonnes).collect
             Logger.getLogger(TechnicienAffichageController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+  @FXML
+    private void showStat(ActionEvent event) {
+          try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Stat.fxml"));
+            Parent root = loader.load();
+            stat.getScene().setRoot(root);
+           } catch (IOException ex) {
+               System.out.print(ex.getMessage());
+        }
+        
+    }
     @FXML
     private void retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/front.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcceuilAdminFXML.fxml"));
             Parent root = loader.load();
             home.getScene().setRoot(root);
         } catch (IOException ex) {

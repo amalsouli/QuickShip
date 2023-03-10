@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="857.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashboardController">
+   <children>
+      <SplitPane dividerPositions="0.16792168674698796" layoutX="283.0" layoutY="177.0" prefHeight="673.0" prefWidth="1013.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.86" prefHeight="817.0" prefWidth="220.0">
+               <children>
+                  <ImageView fitHeight="439.0" fitWidth="229.0" layoutX="-6.0" layoutY="154.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@acceuil.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="161.0" fitWidth="237.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@quick.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#147089" layoutX="45.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" wrappingWidth="131.98046875">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="id_deconn_admin" layoutX="24.0" layoutY="624.0" mnemonicParsing="false" onAction="#deconn_admin" prefHeight="47.0" prefWidth="168.0" text="Se deconnecter" textFill="#3eabbf">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font></Button>
+                  <Button layoutX="81.0" layoutY="102.0" mnemonicParsing="false" onAction="#clear" text="Clear" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="787.0" prefWidth="1010.0">
+               <children>
+                  <TableView fx:id="id_liste" layoutX="14.0" layoutY="174.0" prefHeight="619.0" prefWidth="1056.0">
+                    <columns>
+                      <TableColumn fx:id="id_nom" prefWidth="112.80001831054688" text="NOM" />
+                        <TableColumn fx:id="id_prenom" prefWidth="120.80000305175781" text="PENOM" />
+                        <TableColumn fx:id="id_age" prefWidth="96.800048828125" text="AGE" />
+                        <TableColumn fx:id="id_adresse" prefWidth="145.60003662109375" text="ADRESSE" />
+                        <TableColumn fx:id="id_tel" prefWidth="156.79998779296875" text="Telephone" />
+                        <TableColumn fx:id="id_role" prefWidth="106.4000244140625" text="Role" />
+                        <TableColumn fx:id="id_genre" prefWidth="103.199951171875" text="Genre" />
+                        <TableColumn fx:id="id_pwd" prefWidth="156.80010986328125" text="PASSWORD" visible="false" />
+                    </columns>
+                  </TableView>
+                  <Text fill="#35287e" layoutX="399.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Users" wrappingWidth="272.800048828125">
+                     <font>
+                        <Font name="Times New Roman" size="42.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="id_liste_user" layoutX="7.0" layoutY="119.0" mnemonicParsing="false" onAction="#listeUser" prefHeight="34.0" prefWidth="31.0">
+                     <font>
+                        <Font name="Arial Bold" size="3.0" />
+                     </font></Button>
+                  <Button layoutX="46.0" layoutY="119.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="34.0" prefWidth="102.0" text="DELETE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="id_crud" layoutX="156.0" layoutY="119.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" text="CRUD">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="rech" layoutX="856.0" layoutY="123.0" onKeyReleased="#FiltrerKeyReleased3" />
+                  <Button layoutX="304.0" layoutY="123.0" mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="60.0" text="PDF">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

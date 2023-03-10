@@ -116,7 +116,7 @@ maintenace m;
             rapport r = new rapport(idd, des, duR, pi, ctR, ob, m);
             System.out.println(r);
             rs.modifier(r);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TechinecienAffichage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TechnicienAffichage.fxml"));
             Parent root = loader.load();
 
             Parent parent = loader.getRoot();

@@ -69,8 +69,7 @@ public class ModifierCommandeFXMLController implements Initializable {
     private List<Categorie> categories = cs.afficher();
     private ObservableList<CheckPoint> observableCheckPoint ;
     private ObservableList<Categorie> observableCategories = FXCollections.observableList(categories);
-    @FXML
-    private Button ajouterCheck;
+   
     @FXML
     private CheckBox rapide;
 
@@ -181,7 +180,7 @@ public class ModifierCommandeFXMLController implements Initializable {
             Commande c = new Commande(id, datee, ad, np, catt, u, STATUS_COMMANDE.en_attente, checkP, cap, commandeRapide);
             System.out.println(c);
             cs.modifier(c);
-            Parent nouvelleVue = FXMLLoader.load(getClass().getResource("AfficherCommandeFXML.fxml"));
+            Parent nouvelleVue = FXMLLoader.load(getClass().getResource("AfficherCommandeClient.fxml"));
             Scene scene = modifier.getScene();
             scene.setRoot(nouvelleVue);
         } catch (IOException ex) {
@@ -189,9 +188,7 @@ public class ModifierCommandeFXMLController implements Initializable {
         }
     }
 
-    @FXML
-    private void ajouterCheck(ActionEvent event) {
-    }
+  
 
 }
 

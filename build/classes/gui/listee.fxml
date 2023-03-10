@@ -10,29 +10,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="retourner" prefHeight="501.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListeeController">
+<AnchorPane id="AnchorPane" fx:id="retourner" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListeeController">
     <stylesheets>
         <URL value="@listee.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="trajettable" layoutX="143.0" layoutY="145.0" prefHeight="294.0" prefWidth="679.0">
+      <TableView fx:id="trajettable" layoutX="143.0" layoutY="145.0" prefHeight="395.0" prefWidth="778.0">
         <columns>
           <TableColumn fx:id="date" prefWidth="95.99993896484375" text="       Date" />
-            <TableColumn fx:id="point" prefWidth="108.0" text="Point de depart" />
-            <TableColumn fx:id="conducteur" prefWidth="96.0" text="Conducteur" />
-            <TableColumn fx:id="vehicule" prefWidth="103.00003051757812" text="Vehicule" />
-            <TableColumn fx:id="etat" prefWidth="77.0" text="Etat" />
-            <TableColumn fx:id="Delete" prefWidth="97.0" text="Supprimer" />
-            <TableColumn fx:id="modifier" prefWidth="190.0" text="Modifier" />
+            <TableColumn fx:id="point" prefWidth="154.0" text="Point de depart" />
+            <TableColumn fx:id="conducteur" prefWidth="111.0" text="Conducteur" />
+            <TableColumn fx:id="vehicule" prefWidth="93.0" text="Vehicule" />
+            <TableColumn fx:id="etat" prefWidth="74.0" text="Etat" />
+            <TableColumn fx:id="Delete" prefWidth="121.0" text="Supprimer" />
+            <TableColumn fx:id="modifier" prefWidth="128.0" text="Modifier" />
         </columns>
       </TableView>
       <Button fx:id="retour" layoutX="25.0" layoutY="230.0" mnemonicParsing="false" onAction="#retour" text="Ajouter" />
-      <Text fx:id="text1" layoutX="318.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des  Trajets" wrappingWidth="240.6708984375" />
+      <Text fx:id="text1" layoutX="356.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des  Trajets" wrappingWidth="240.6708984375" />
       <Button fx:id="btn3" mnemonicParsing="false" onAction="#acceuil" text="&lt;--" />
       <Text layoutX="109.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.00000900030136" />
       <Label layoutX="15.0" layoutY="73.0" prefHeight="21.0" prefWidth="16.0" />
-      <TextField fx:id="rech" layoutX="25.0" layoutY="477.0" />
-      <Button fx:id="rechercher" layoutX="257.0" layoutY="74.0" mnemonicParsing="false" onAction="#recherche" text="Rechercher" />
-      <DatePicker fx:id="daterech" layoutX="19.0" layoutY="81.0" />
+      <TextField fx:id="rech" layoutX="580.0" layoutY="94.0" promptText="Search" />
+      <DatePicker fx:id="daterech" layoutX="19.0" layoutY="81.0" onAction="#filter" />
+      <Button fx:id="refresh" layoutX="259.0" layoutY="74.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
    </children>
 </AnchorPane>

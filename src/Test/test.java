@@ -11,6 +11,7 @@ import Entities.Trajet;
 import Entities.Vehicule;
 import Services.CheckService;
 import Services.TrajetService;
+import Services.maintenaceService;
 import Utils.MyDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -34,6 +35,8 @@ public class test {
             calendar.set(Calendar.DAY_OF_MONTH, 23);
             java.util.Date specifiedDate = calendar.getTime();
             Date sqlDate = new Date(specifiedDate.getTime());
+            maintenaceService m=new maintenaceService();
+            System.out.println(m.recuperer());
             //Trajet T =new Trajet(21,sqlDate,"tuuozer",V,C);
           //  S.ajouter(T);
            // S.modifier(T);

@@ -10,27 +10,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCategorieFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCategorieFXMLController">
     <stylesheets>
-        <URL value="@affichercategoriefxml.css"/>
+        <URL value="@affichercategoriefxml.css" />
     </stylesheets>
     <children>
-      <VBox layoutX="-16.0" prefHeight="410.0" prefWidth="100.0" style="-fx-background-color: #ff4204;" />
-      <TableView fx:id="tv" layoutX="58.0" layoutY="110.0" prefHeight="286.0" prefWidth="520.0">
+      <VBox layoutX="-16.0" prefHeight="666.0" prefWidth="100.0" style="-fx-background-color: #ff4204;" />
+      <TableView fx:id="tv" layoutX="124.0" layoutY="131.0" prefHeight="460.0" prefWidth="819.0">
         <columns>
-          <TableColumn fx:id="nom" prefWidth="130.0" text="Nom" />
-            <TableColumn fx:id="description" prefWidth="165.0" text="Description" />
-            <TableColumn fx:id="supprimer" maxWidth="450.0" prefWidth="88.0" text="Supprimer" />
-            <TableColumn fx:id="modifier" maxWidth="200.0" prefWidth="71.0" text="Modifier" />
+          <TableColumn fx:id="nom" prefWidth="172.0" text="Nom" />
+            <TableColumn fx:id="description" prefWidth="208.0" text="Description" />
+            <TableColumn fx:id="supprimer" maxWidth="450.0" prefWidth="236.0" text="Supprimer" />
+            <TableColumn fx:id="modifier" maxWidth="309.0" prefWidth="202.0" text="Modifier" />
         </columns>
       </TableView>
-      <Label layoutX="229.0" layoutY="10.0" prefHeight="35.0" prefWidth="177.0" text="Les catégories" textFill="#ff6309">
+      <Label layoutX="366.0" layoutY="22.0" prefHeight="35.0" prefWidth="177.0" text="Les catégories" textFill="#ff6309">
          <font>
             <Font name="Britannic Bold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="ajouter" layoutX="57.0" layoutY="58.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="111.0" text="Ajouter Catégorie" />
+      <Button fx:id="ajouter" layoutX="53.0" layoutY="75.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="145.0" text="Ajouter Catégorie" />
       <Button fx:id="acceuil" layoutX="57.0" layoutY="27.0" mnemonicParsing="false" onAction="#acceuil" text="Acceuil" />
-      <TextField fx:id="search" layoutX="467.0" layoutY="71.0" promptText="Search" />
+      <TextField fx:id="search" layoutX="601.0" layoutY="83.0" promptText="Search" />
    </children>
 </AnchorPane>
