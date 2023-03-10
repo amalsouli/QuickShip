@@ -26,8 +26,8 @@ public class TESTFXMain extends Application {
     public void start(Stage primaryStage) {
       try {
           
-           Parent root = FXMLLoader.load(getClass().getResource("../GUI/AccueilFXML.fxml"));
-           //Parent root = FXMLLoader.load(getClass().getResource("../GUI/FrontFXML.fxml"));
+           //Parent root = FXMLLoader.load(getClass().getResource("../GUI/AccueilFXML.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("../GUI/FrontTechnicienFXML.fxml"));
       
 
             Scene scene = new Scene(root);

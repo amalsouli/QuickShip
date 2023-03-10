@@ -6,16 +6,10 @@
 package GUI;
 
 import entities.Vehicule;
-import java.io.File;
 import java.io.IOException;
-import javafx.scene.shape.Rectangle;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,43 +18,32 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import services.VehiculeServices;
 
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author USER
  */
-public class FrontFXMLController implements Initializable {
+public class FrontTechnicienFXMLController implements Initializable {
 
     @FXML
     private VBox cardContainer;
-    VehiculeServices vehiculeSer = new VehiculeServices();
+     VehiculeServices vehiculeSer = new VehiculeServices();
     ObservableList<Vehicule> ListVehicule = FXCollections.observableArrayList();
     private final SimpleStringProperty filtre = new SimpleStringProperty("");
-    
 
-    /*@FXML
-    private TextField search;*/
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         List<Vehicule> list = vehiculeSer.afficher();
         ListVehicule.addAll(list);
 
@@ -123,12 +106,12 @@ public class FrontFXMLController implements Initializable {
             label7x.setPrefWidth(150);
 
             // Créer les éléments de la quatrième colonne
-            Button button_panne = new Button("En panne");
+            Button button_panne = new Button("DISPONIBLE");
             //button_panne.setPadding(new Insets(10, 10, 10, 10));
-            button_panne.setPrefWidth(100);
+            button_panne.setPrefWidth(120);
 
             button_panne.setOnAction((event) -> {
-                vehi.setStatut("EN PANNE");
+                vehi.setStatut("DISPONIBLE");
                 vehiculeSer.modifier(vehi);
 
                 //refresh ne marche pas
@@ -136,7 +119,7 @@ public class FrontFXMLController implements Initializable {
                 //ListVehicule.setAll(NewList);
              
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontFXML.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontTechnicienFXML.fxml"));
                     Parent root = loader.load();
                     cardContainer.getScene().setRoot(root);
                    
@@ -147,7 +130,7 @@ public class FrontFXMLController implements Initializable {
                
             });
 
-            if (vehi.getStatut().equals("EN PANNE")) {
+            if (vehi.getStatut().equals("DISPONIBLE")) {
                 label7x.setStyle("-fx-text-fill: red; -fx-font-weight:  bold");
             }
 
@@ -178,26 +161,10 @@ public class FrontFXMLController implements Initializable {
             // Node node = cardContainer;
         }
 
-        /*recherchertxt.textProperty().addListener((observable, oldValue, newValue) -> {
-            filtre.set(newValue);
-        });
-        Predicate<Vehicule> filtrePersonnes = vehicule
-                -> filtre.get().isEmpty()
-                || vehicule.getMatricule().toLowerCase().contains(filtre.get().toLowerCase())
-                || vehicule.getModele().toLowerCase().contains(filtre.get().toLowerCase())
-                || vehicule.getMarque().toLowerCase().contains(filtre.get().toLowerCase())
-                || (vehicule.getType().toString()).contains(filtre.get().toLowerCase())
-                || (vehicule.getCapacite() + "").contains(filtre.get().toLowerCase())
-                || vehicule.getCouleur().toLowerCase().contains(filtre.get().toLowerCase())
-                || (vehicule.getAnnee() + "").contains(filtre.get().toLowerCase())
-                || (vehicule.getStatut().toString()).contains(filtre.get().toLowerCase());
-
-        ListVehicule.setAll(list.stream().filter(filtrePersonnes).collect(Collectors.toList()));
-        filtre.addListener((observable, oldValue, newValue) -> {
-            ListVehicule.setAll(list.stream().filter(filtrePersonnes).collect(Collectors.toList()));
-            
-
-        });*/
+     
+      
     }
 
+    
+    
 }
