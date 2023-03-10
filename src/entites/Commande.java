@@ -19,11 +19,11 @@ public class Commande {
     private Utilisateur utilisateur;
     private CheckPoint checkPoint;
    private STATUS_COMMANDE status_commande;
-   
+   private byte commandeRapide ;
     public Commande() {
     }
 
-    public Commande(Date date, String adresse_départ, String nom_produit, Categorie categorie,Utilisateur utilisateur,STATUS_COMMANDE status_commande,CheckPoint checkPoint,int capacite) {
+    public Commande(Date date, String adresse_départ, String nom_produit, Categorie categorie,Utilisateur utilisateur,STATUS_COMMANDE status_commande,CheckPoint checkPoint,int capacite,byte commandeRapide) {
         this.date = date;
         this.adresse_départ = adresse_départ;
         this.nom_produit = nom_produit;
@@ -32,9 +32,10 @@ public class Commande {
         this.checkPoint = checkPoint;
         this.status_commande = status_commande;
         this.capacite=capacite;
+        this.commandeRapide= commandeRapide;
     }
 
-    public Commande(int id ,Date date, String adresse_départ, String nom_produit, Categorie categorie,Utilisateur utilisateur,STATUS_COMMANDE status_commande,CheckPoint checkPoint, int capacite) {
+    public Commande(int id ,Date date, String adresse_départ, String nom_produit, Categorie categorie,Utilisateur utilisateur,STATUS_COMMANDE status_commande,CheckPoint checkPoint, int capacite,byte commandeRapide) {
         this.id = id;
         this.date = date;
         this.adresse_départ = adresse_départ;
@@ -43,8 +44,8 @@ public class Commande {
         this.utilisateur = utilisateur;
         this.checkPoint = checkPoint;
         this.status_commande = status_commande;
-                this.capacite=capacite;
-
+        this.capacite=capacite;
+        this.commandeRapide= commandeRapide;
     }
 
        public int getId() {
@@ -118,10 +119,16 @@ public class Commande {
         this.capacite = capacite;
     }
 
-    @Override
-    public String toString() {
-        return "Commande{" + "id=" + id + ", capacite=" + capacite + ", date=" + date + ", adresse_d\u00e9part=" + adresse_départ + ", nom_produit=" + nom_produit + ", categorie=" + categorie + ", utilisateur=" + utilisateur + ", checkPoint=" + checkPoint + ", status_commande=" + status_commande + '}';
+    public byte getCommandeRapide() {
+        return commandeRapide;
     }
 
-        
+    public void setCommandeRapide(byte commandeRapide) {
+        this.commandeRapide = commandeRapide;
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" + "id=" + id + ", capacite=" + capacite + ", date=" + date + ", adresse_d\u00e9part=" + adresse_départ + ", nom_produit=" + nom_produit + ", categorie=" + categorie + ", utilisateur=" + utilisateur + ", checkPoint=" + checkPoint + ", status_commande=" + status_commande + ", commandeRapide=" + commandeRapide + '}';
+    }    
 }

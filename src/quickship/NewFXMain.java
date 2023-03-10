@@ -21,9 +21,13 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../GUI/AcceuilFXML.fxml"));
+          // Parent root = FXMLLoader.load(getClass().getResource("../GUI/AcceuilFXML.fxml"));
+             Parent root = FXMLLoader.load(getClass().getResource("../GUI/AcceuilFrontFXML.fxml"));
+
             Scene scene = new Scene(root);
             primaryStage.setTitle("QuickShip");
+            primaryStage.setWidth(725);
+            primaryStage.setHeight(450);
             primaryStage.setScene(scene);
             primaryStage.show();
 

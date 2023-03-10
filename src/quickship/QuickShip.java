@@ -27,7 +27,7 @@ public class QuickShip {
     public static void main(String[] args) {
         //MyDB cnx = MyDB.getInstance();
         //cnx.getCnx();
-        Utilisateur u = new Utilisateur(1, "selim");
+        Utilisateur u = new Utilisateur(1, "selim","admin");
         CheckPoint cp = new CheckPoint(1, "sousse");
         CategorieService catSer = new CategorieService();
         Categorie cat = new Categorie("fragile", "aaaaaa");
@@ -43,7 +43,7 @@ public class QuickShip {
         java.util.Date specifiedDate = calendar.getTime();
         Date sqlDate = new Date(specifiedDate.getTime());
         CommandeService commSer = new CommandeService();
-        Commande c = new Commande(18,sqlDate, "aaaaaaaaaaaa", "aaaa", catmod, u, STATUS_COMMANDE.en_attente, cp,20);
+      //  Commande c = new Commande(sqlDate, "aaaaaaaaaaaa", "aaaa", catmod, u, STATUS_COMMANDE.en_attente, cp,20, 1 byte);
        // commSer.ajouter(c);
         //commSer.modifier(c);    
         //commSer.supprimer(c);

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -15,21 +16,21 @@
     </stylesheets>
     <children>
       <VBox layoutX="-16.0" prefHeight="410.0" prefWidth="100.0" style="-fx-background-color: #ff4204;" />
-      <TableView fx:id="tv" layoutX="57.0" layoutY="88.0" prefHeight="295.0" prefWidth="520.0">
+      <TableView fx:id="tv" layoutX="58.0" layoutY="110.0" prefHeight="286.0" prefWidth="520.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="54.0" text="Id" />
           <TableColumn fx:id="nom" prefWidth="130.0" text="Nom" />
             <TableColumn fx:id="description" prefWidth="165.0" text="Description" />
-            <TableColumn fx:id="supprimer" maxWidth="450.0" prefWidth="84.0" text="Supprimer" />
-            <TableColumn fx:id="modifier" maxWidth="200.0" prefWidth="68.0" text="Modifier" />
+            <TableColumn fx:id="supprimer" maxWidth="450.0" prefWidth="88.0" text="Supprimer" />
+            <TableColumn fx:id="modifier" maxWidth="200.0" prefWidth="71.0" text="Modifier" />
         </columns>
       </TableView>
-      <Label layoutX="236.0" layoutY="22.0" prefHeight="35.0" prefWidth="162.0" text="Les catégories" textFill="#ff6309">
+      <Label layoutX="229.0" layoutY="10.0" prefHeight="35.0" prefWidth="177.0" text="Les catégories" textFill="#ff6309">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Britannic Bold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="ajouter" layoutX="467.0" layoutY="52.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="110.0" text="Ajouter Catégorie" />
+      <Button fx:id="ajouter" layoutX="57.0" layoutY="58.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="111.0" text="Ajouter Catégorie" />
       <Button fx:id="acceuil" layoutX="57.0" layoutY="27.0" mnemonicParsing="false" onAction="#acceuil" text="Acceuil" />
+      <TextField fx:id="search" layoutX="467.0" layoutY="71.0" promptText="Search" />
    </children>
 </AnchorPane>

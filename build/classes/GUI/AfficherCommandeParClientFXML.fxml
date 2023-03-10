@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" onDragDetected="#afficherPanier" opacity="0.85" prefHeight="674.0" prefWidth="1043.0" style="-fx-background-color: #02030A;" styleClass="mainFxmlClass" stylesheets="@panier.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherCommandeParClientFXMLController">
+   <children>
+      <AnchorPane fx:id="bord" layoutX="-83.0" layoutY="-18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;">
+         <children>
+            <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+               <children>
+                  <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Pane fx:id="panierPane" layoutX="-133.0" layoutY="21.0" prefHeight="573.0" prefWidth="783.0" style="-fx-background-color: #F #02030A5F5DC;">
+                           <children>
+                              <TextField fx:id="chercherP" layoutX="566.0" layoutY="29.0" onInputMethodTextChanged="#chercherP" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                              <Label layoutX="57.0" layoutY="25.0" text="Mes commandes" textFill="#e7e5e5">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" layoutY="101.0" prefHeight="42.0" prefWidth="728.0" spacing="80.0" style="-fx-background-color: #02030A;">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="73.0" text="ID_PRODUCT" textFill="#e7e5e5">
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="NOM" textFill="#e7e5e5">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="PRIX" textFill="#e7e5e5">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label prefHeight="18.0" prefWidth="65.0" text="QUANTITE" textFill="#e7e5e5">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label textFill="#e7e5e5">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="415.0" prefWidth="758.0" stylesheets="@style.css">
+                                 <content>
+                                    <VBox fx:id="pnItems" prefHeight="398.0" prefWidth="852.0" spacing="5.0" style="-fx-background-color: #4682B4; -fx-background-color: ;" stylesheets="@style.css">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <children>
+                                          <VBox fx:id="vboxPanier" alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="675.0" style="-fx-background-color: #02030A;">
+                                             <children>
+                                                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4682B4;" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                              <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children></Pane>
+               </children>
+            </StackPane>
+         </children>
+         <effect>
+            <DropShadow color="#1b1eeb" />
+         </effect>
+      </AnchorPane>
+      <Accordion />
+   </children>
+</AnchorPane>

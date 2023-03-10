@@ -6,15 +6,16 @@
 package GUI;
 
 import entites.Categorie;
-import entites.CheckPoint;
 import entites.Commande;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,9 +31,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import services.CategorieService;
-import services.CommandeService;
 
 /**
  * FXML Controller class
@@ -41,8 +42,6 @@ import services.CommandeService;
  */
 public class AfficherCategorieFXMLController implements Initializable {
 
-    @FXML
-    private TableColumn<Categorie, Integer> id;
     @FXML
     private TableColumn<Categorie, String> nom;
     @FXML
@@ -59,21 +58,35 @@ public class AfficherCategorieFXMLController implements Initializable {
     private Button ajouter;
     @FXML
     private Button acceuil;
+    @FXML
+    private TextField search;
+    
+    private final SimpleStringProperty filtre = new SimpleStringProperty("");
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List list = catSer.afficher();
+        List<Categorie> list = catSer.afficher();
         ListCategories.addAll(list);
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+       // id.setCellValueFactory(new PropertyValueFactory<>("id"));
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         tv.setItems(ListCategories);
         this.delete();
         this.modifier();
+         search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtre.set(newValue);
+        });
+         Predicate<Categorie> filtreCategories = categorie
+                -> filtre.get().isEmpty()
+                || categorie.getNom().toLowerCase().contains(filtre.get().toLowerCase());
+        ListCategories.setAll(list.stream().filter(filtreCategories).collect(Collectors.toList()));
+        filtre.addListener((observable, oldValue, newValue) -> {
+            ListCategories.setAll(list.stream().filter(filtreCategories).collect(Collectors.toList()));
+        });
     }
 
     private void delete() {

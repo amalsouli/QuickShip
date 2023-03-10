@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -10,70 +12,81 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterCommandeFXMLController">
-   <children>
-      <Label layoutX="57.0" layoutY="121.0" prefHeight="20.0" prefWidth="105.0" text="Nom produit :" textAlignment="CENTER" underline="true">
+<AnchorPane id="AnchorPane" prefHeight="439.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterCommandeFXMLController">
+  
+    <children>
+      <VBox layoutX="-61.0" prefHeight="439.0" prefWidth="114.0" style="-fx-background-color: #ff4204;" />
+        <JFXHamburger fx:id="menu" prefHeight="44.0" prefWidth="52.0" />
+
+      <Label layoutX="69.0" layoutY="122.0" prefHeight="26.0" prefWidth="114.0" text="Nom produit :" textAlignment="CENTER" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <TextField fx:id="nom_produit" layoutX="187.0" layoutY="119.0" prefHeight="25.0" prefWidth="150.0">
+      <TextField fx:id="nom_produit" layoutX="218.0" layoutY="122.0" prefHeight="25.0" prefWidth="150.0">
          <effect>
             <InnerShadow color="#ffb29dbf" />
          </effect></TextField>
-      <Label graphicTextGap="8.0" layoutX="176.0" layoutY="25.0" prefHeight="35.0" prefWidth="234.0" text="Ajouter commande" textAlignment="CENTER" textFill="#ff4204" textOverrun="WORD_ELLIPSIS" wrapText="true">
+      <Label graphicTextGap="8.0" layoutX="203.0" layoutY="14.0" prefHeight="35.0" prefWidth="259.0" text="Passer une commande" textAlignment="CENTER" textFill="#ff4204" textOverrun="WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Label>
-      <TextField fx:id="adresse_depart" layoutX="187.0" layoutY="164.0" prefHeight="25.0" prefWidth="150.0">
+      <TextField fx:id="adresse_depart" layoutX="218.0" layoutY="164.0" prefHeight="25.0" prefWidth="150.0">
          <effect>
             <InnerShadow color="#ffb29dbf" />
          </effect></TextField>
-      <Label layoutX="57.0" layoutY="166.0" prefHeight="20.0" prefWidth="139.0" text="Adresse de départ :" underline="true">
+      <Label layoutX="69.0" layoutY="167.0" prefHeight="20.0" prefWidth="157.0" text="Adresse de départ :" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <Label layoutX="156.0" layoutY="74.0" prefHeight="17.0" prefWidth="41.0" text="Date :" underline="true">
+      <Label layoutX="69.0" layoutY="77.0" prefHeight="18.0" prefWidth="52.0" text="Date :" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <DatePicker fx:id="date" layoutX="226.0" layoutY="72.0" prefHeight="25.0" prefWidth="197.0">
+      <DatePicker fx:id="date" layoutX="218.0" layoutY="73.0" prefHeight="25.0" prefWidth="197.0">
          <effect>
             <InnerShadow color="#ffb29dbf" />
          </effect></DatePicker>
-      <Label layoutX="57.0" layoutY="214.0" prefHeight="20.0" prefWidth="89.0" text="Déstination :" underline="true">
+      <Label layoutX="69.0" layoutY="215.0" prefHeight="20.0" prefWidth="100.0" text="Déstination :" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <ComboBox fx:id="check_point" layoutX="187.0" layoutY="211.0" prefWidth="150.0">
+      <ComboBox fx:id="check_point" layoutX="218.0" layoutY="212.0" prefWidth="150.0">
          <effect>
             <InnerShadow choke="0.21" color="#ffb29dbf" height="34.28" radius="14.8025" width="26.93" />
          </effect></ComboBox>
-      <Label layoutX="57.0" layoutY="267.0" prefHeight="20.0" prefWidth="81.0" text="Catégorie :" underline="true">
+      <Label layoutX="69.0" layoutY="260.0" prefHeight="20.0" prefWidth="100.0" text="Catégorie :" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <ComboBox fx:id="categorie" layoutX="187.0" layoutY="264.0" prefWidth="150.0">
+      <ComboBox fx:id="categorie" layoutX="220.0" layoutY="257.0" prefWidth="150.0">
          <effect>
             <InnerShadow choke="0.16" color="#ffb29dbf" height="20.76" radius="21.802500000000002" width="68.45" />
          </effect></ComboBox>
-      <Label layoutX="62.0" layoutY="334.0" prefHeight="20.0" prefWidth="72.0" text="Capacité :" underline="true">
+      <Label layoutX="69.0" layoutY="301.0" prefHeight="20.0" prefWidth="81.0" text="Capacité :" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <TextField fx:id="capacite" layoutX="188.0" layoutY="332.0" prefHeight="25.0" prefWidth="150.0">
+      <TextField fx:id="capacite" layoutX="220.0" layoutY="298.0" prefHeight="25.0" prefWidth="150.0">
          <effect>
             <InnerShadow color="#ffb29dbf" />
          </effect></TextField>
-      <Button fx:id="ajouter" layoutX="494.0" layoutY="339.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="36.0" prefWidth="81.0" text="Ajouter" textFill="#f74605">
+      <Button fx:id="ajouter" layoutX="516.0" layoutY="382.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="36.0" prefWidth="81.0" text="Ajouter" textFill="#f74605">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="nouvelleCheck" layoutX="352.0" layoutY="212.0" mnemonicParsing="false" onAction="#ajouterCheckPoint" prefHeight="25.0" prefWidth="52.0" text="Autre.." textFill="#f74605" />
-      <VBox layoutX="-61.0" prefHeight="400.0" prefWidth="100.0" style="-fx-background-color: #ff4204;" />
-      <Button fx:id="retour" layoutX="398.0" layoutY="339.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="81.0" text="Retour" textFill="#28211f">
+      <Button fx:id="nouvelleCheck" layoutX="381.0" layoutY="212.0" mnemonicParsing="false" onAction="#ajouterCheckPoint" prefHeight="25.0" prefWidth="58.0" text="Autre.." textFill="#f74605">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="retour" layoutX="406.0" layoutY="382.0" mnemonicParsing="false" onAction="#retour" prefHeight="36.0" prefWidth="81.0" text="Annuler" textFill="#28211f">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <CheckBox fx:id="rapide" layoutX="69.0" layoutY="348.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="177.0" text="Commande Rapide">
+         <font>
+            <Font name="Britannic Bold" size="15.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>

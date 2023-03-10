@@ -10,15 +10,18 @@ package entites;
  * @author asus
  */
 public class Utilisateur {
+
     private int id;
     private String nom;
+    private String role;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int id, String nom) {
+    public Utilisateur(int id, String nom,String role) {
         this.id = id;
         this.nom = nom;
+        this.role=role;
     }
 
     public int getId() {
@@ -37,9 +40,18 @@ public class Utilisateur {
         this.nom = nom;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "utilisateur{" + "id=" + id + ", nom=" + nom + '}';
+        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", role=" + role + '}';
     }
-    
+
+  
 }

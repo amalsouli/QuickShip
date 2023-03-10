@@ -27,8 +27,8 @@
          <font>
             <Font name="Britannic Bold" size="17.0" />
          </font></Label>
-      <TextField fx:id="nom" layoutX="167.0" layoutY="103.0" />
-      <TextArea fx:id="description" layoutX="167.0" layoutY="155.0" prefHeight="69.0" prefWidth="280.0" />
+      <TextField fx:id="nom" layoutX="180.0" layoutY="102.0" />
+      <TextArea fx:id="description" layoutX="180.0" layoutY="155.0" prefHeight="69.0" prefWidth="280.0" />
       <Button fx:id="ajouter" layoutX="478.0" layoutY="261.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="36.0" prefWidth="81.0" text="Ajouter" textFill="#f74605">
          <font>
             <Font name="System Bold" size="14.0" />

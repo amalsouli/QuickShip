@@ -29,8 +29,8 @@ public class CommandeService implements IService<Commande> {
     @Override
     public void ajouter(Commande t) {
         try {
-            String sql = "INSERT INTO `commande`( `utilisateur_id`, `date`, `id_cat`, `adresse_départ`, `nom_produit` ,`id_check`,`status_commande`,`capticite`) VALUES"
-                    + " ('" + t.getUtilisateur().getId() + "','" + t.getDate() + "','" + t.getCategorie().getId() + "','" + t.getAdresse_départ() + "','" + t.getNom_produit() + "','" + t.getCheckPoint().getId() + "','" + t.getStatus_commande() + "','" + t.getCapacite()+"')";
+            String sql = "INSERT INTO `commande`( `utilisateur_id`, `date`, `id_cat`, `adresse_départ`, `nom_produit` ,`id_check`,`status_commande`,`capacite`,`commandeRapide`) VALUES"
+                    + " ('" + t.getUtilisateur().getId() + "','" + t.getDate() + "','" + t.getCategorie().getId() + "','" + t.getAdresse_départ() + "','" + t.getNom_produit() + "','" + t.getCheckPoint().getId() + "','" + t.getStatus_commande() + "','" + t.getCapacite()+ "','" + t.getCommandeRapide()+"')";
             cnx = MyDB.getInstance().getCnx();
             Statement stm = cnx.createStatement();
             stm.executeUpdate(sql);
@@ -56,15 +56,18 @@ public class CommandeService implements IService<Commande> {
                 c.setAdresse_départ(rs.getString("adresse_départ"));
                 c.setNom_produit(rs.getString("nom_produit"));
                 c.setCapacite(rs.getInt("capacite"));
+                c.setCommandeRapide(rs.getByte("commandeRapide"));
                 String Status = rs.getString("status_commande");
                 STATUS_COMMANDE sc = STATUS_COMMANDE.valueOf(Status);
                 c.setStatus_commande(sc);
                
                 int id_user = rs.getInt("utilisateur_id");
                 String nom_user = rs.getString("nom");
+                   String role_user = rs.getString("role");
                 Utilisateur user = new Utilisateur();
                 user.setId(id_user);
                 user.setNom(nom_user);
+                user.setRole(role_user);
                 
                  int id_check = rs.getInt("id_check");
                 String destination = rs.getString("destination");
@@ -96,7 +99,7 @@ public class CommandeService implements IService<Commande> {
     @Override
     public void modifier(Commande t) {
         try {
-            String sql = "UPDATE `commande` SET `utilisateur_id`='" + t.getUtilisateur().getId() + "',`date`='" + t.getDate() + "',`id_cat`='" + t.getCategorie().getId() + "',`adresse_départ`='" + t.getAdresse_départ() + "',`nom_produit`='" + t.getNom_produit() + "',`id_check`='" + t.getCheckPoint().getId() + "',`status_commande`='" + t.getStatus_commande() +"',`capacite`='" + t.getCapacite()+ "' WHERE id = " + t.getId() + "";
+            String sql = "UPDATE `commande` SET `utilisateur_id`='" + t.getUtilisateur().getId() + "',`date`='" + t.getDate() + "',`id_cat`='" + t.getCategorie().getId() + "',`adresse_départ`='" + t.getAdresse_départ() + "',`nom_produit`='" + t.getNom_produit() + "',`id_check`='" + t.getCheckPoint().getId() + "',`status_commande`='" + t.getStatus_commande() +"',`capacite`='" + t.getCapacite()+"',`commandeRapide`='" + t.getCommandeRapide()+ "' WHERE id = " + t.getId() + "";
             cnx = MyDB.getInstance().getCnx();
             Statement statement = cnx.createStatement();
             statement.executeUpdate(sql);
